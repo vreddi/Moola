@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<title>Moola</title>
+
+	<!-- Include Style -->
+	<link rel="stylesheet" type="text/css" href="style/main.css">
+
+	<!-- Include Bootstrap Style -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- Include FontAwesome Style -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	<!-- Include Dropzone Style -->
+	<link rel="stylesheet" href="style/dropzone.css">
+
+	<!-- Include Relevant Scripts -->
+	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="script/dropzone.js"></script>
+	<script src="script/main.js"></script>
+
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse">
+
+		<div class="container-fluid">
+
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html"><i class="fa fa-money"></i> Moola</a>
+			</div>
+
+			<ul class="nav navbar-nav">
+
+			</ul>
+
+		</div>
+
+	</nav>
+
+	<div class=content>
+
+		<div class="sheetdropzone">
+
+			<form class="box" method="post" action="" enctype="multipart/form-data">
+				<div class="box__input">
+					<input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+					<label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+					<button class="box__button" type="submit">Upload</button>
+				</div>
+					<div class="box__uploading">Uploading&hellip;</div>
+					<div class="box__success">Done!</div>
+					<div class="box__error">Error! <span></span>.</div>
+				</form>
+
+		</div>
+	</div>
+
+</body>
+
+</html>
