@@ -1,5 +1,5 @@
 namespace Moola.Model.Cell{
-    
+
     export class DateInfo{
     
         value : string;
