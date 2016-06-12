@@ -4,14 +4,16 @@
 /// <reference path="cost.ts" />
 /// <reference path="flow.ts" />
 /// <reference path="paymentMethod.ts" />
+interface IEntity{
 
+}
 
 namespace Moola.Model.Row{
     
     /**
      * Entity represents a row in your expenses sheet. 
      */
-    class Entity{
+    class Entity implements IEntity{
         
         public date : Moola.Model.Cell.DateInfo;
         public item : Moola.Model.Cell.Item;
@@ -20,15 +22,12 @@ namespace Moola.Model.Row{
         public flow : Moola.Model.Cell.Flow;
         public paymentMethod : Moola.Model.Cell.PaymentMethod;
         
-        
-        
-        public getCurrentDate(){
-            
-            var curDate = {};
-            var date = new Date();
-            
-            this.date.
+        constructor(){
+
         }
+
+        
+        
     }
     
     
