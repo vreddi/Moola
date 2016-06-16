@@ -21,8 +21,8 @@ export class DateInfo{
             
             var dateStringElements : Array<string> = DateInfo.getDateStringElements(this.dayNumber, this.monthNumber, this.yearNumber);
             
-            this.day = dateStringElements[0];
-            this.month = dateStringElements[1];
+            this.month = dateStringElements[0];
+            this.day = dateStringElements[1];
             this.year = dateStringElements[2];
         }
         else{
@@ -107,7 +107,7 @@ export class DateInfo{
     public getDayOfTheWeek(){
 
         var jdn : number = this.getJulianDayNumber();
-        var w : number = (jdn + 1) % 7;
+        var w : number = (jdn) % 7;
         var allDays : Array<string> = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
         var day : string = allDays[w];
 
