@@ -4,12 +4,19 @@ export class Flow{
     isExpense : boolean;
     value : string;
     
+    constructor(value : string){
+
+        this.value = value;
+        this.isExpense = this.isExpenditure();
+    }
+
     /**
      * To check if the entity is an expenditure or not
+     * @returns: True/False (boolean)
      */
-    public isExpenditure(val : string){
+    public isExpenditure(){
         
-        if(val.toLowerCase() === "out"){            
+        if(this.value.toLowerCase() === "out"){            
             return true;
         }
         
@@ -18,10 +25,11 @@ export class Flow{
     
     /**
      * To check if the entity is an earning or not.
+     * @returns: True/False (boolean)
      */
-    public isEarning(val : string){
+    public isEarning(){
         
-        if(val.toLowerCase() === "in"){           
+        if(this.value.toLowerCase() === "in"){           
             return true;
         }
         
