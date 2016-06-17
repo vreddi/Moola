@@ -101,8 +101,90 @@ export class DateInfo{
     }
 
     /**
+     * Determines if the referenced date is a weekend day or not. Weekend days only include
+     * Saturday and Sunday.
+     * @returns : True/False (boolean)
+     */
+    public isWeekend(){
+
+        var jdn : number = this.getJulianDayNumber();
+        var w : number = (jdn) % 7;
+        
+        if(w == 5 || w == 6){
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Determines the total number weekends that occured betweeen 2 dates. (Saturday, Sunday) clubbing is considered
+     * as a weekend. If we start from a Sunday then that (Sunday) is also a weekend even though we did not have a saturday.
+     * Justification is that the range is still part of the weekeend even though it only spent one day from the weekend.
+     * Similarly if you date range ends on a Saturday then that (Saturday) is also considered as a separate weekend.
+     * @returns: Total number of weekends between 2 dates (number)
+     */
+    public static totalWeekendsBetweenDates(start : DateInfo, end : DateInfo){
+
+        var totalWeekendDays = totalWeekendDays(start, end);
+        var startJDN : number = start.getJulianDayNumber();
+        var endJDN : number = end.getJulianDayNumber();
+        var startW : number = startJDN % 7;
+        var endW : number = endJDN % 7;
+        
+        if(startW == 6 || endW == 5){
+
+            return (totalWeekendDays/2) + (totalWeekendDays % 2) + 1;
+        }
+
+        return (totalWeekendDays/2) + (totalWeekendDays % 2);
+    }
+
+    /**
+     * Calculates the total number weekend days between 2 dates. Weekend days only include Saturday and 
+     * Sunday.
+     * @returns: Number of weekend dates between 2 dates (number)
+     */
+    public static totalWeekendDaysBetweenDates(start : DateInfo, end : DateInfo){
+
+        var startJDN : number = start.getJulianDayNumber();
+        var endJDN : number = end.getJulianDayNumber();
+        var weekendDaysCount : number = 0;
+        
+        for(var day : number = startJDN; day <= endJDN; day++){
+
+            var w = day % 7;
+            if(w == 5 || w == 6){
+                weekendDaysCount++;
+            }
+
+        }
+    }
+
+    /**
+     * Calculates the total number of weekdays between 2 given dates. Weekdays only includes days from Monday
+     * through Friday (including the ends).
+     * @returns: Number of weekdays between 2 dates (number)
+     */
+    public static totalWeekDaysBetweenDays(start : DateInfo, end : DateInfo){
+
+        var startJDN : number = start.getJulianDayNumber();
+        var endJDN : number = end.getJulianDayNumber();
+        var weekDayCount : number = 0;
+        
+        for(var day : number = startJDN; day <= endJDN; day++){
+
+            var w = day % 7;
+            if(w != 5 && w != 6){
+                weekDayCount++;
+            }
+
+        }
+    }
+
+    /**
      * Calcutes the day of the week for a particular date in the past of in the future.
-     * @returns : Day of the week (string)
+     * @returns: Day of the week (string)
      */
     public getDayOfTheWeek(){
 
