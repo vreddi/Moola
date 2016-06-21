@@ -5,30 +5,40 @@ export class Collection<T> {
     private _items : Array<T> = [];
 
     // Get the collection as an array
-    public GetItems() {
+    public getItems() {
         return this._items;
     }
 
     // Get a specific item from a collection given it's index
-    public GetItem(index: number): T{
+    public getItem(index: number): T{
         return this._items[index];
     }
 
     // Length of the collection
-    public Count() { return this._items.length; }
+    public count() { return this._items.length; }
 
     // Add an object to the collection
-    public Add(item: T) {
+    public add(item: T) {
         this._items.push(item);
     }
 
     // Delete an object from the collection
-    public Delete(itemIndex: number) {
+    public delete(itemIndex: number) {
         this._items.splice(itemIndex, 1);
     }
 
+    // Sort the objects in the collection in-place
+    public sort(){
+        this._items.sort();
+    }
+
+    // Reverse the order of object in-place
+    public reverse(){
+        this._items.reverse();
+    }
+
     // Find the index of a given object in a collection
-    public IndexOfItem(obj: T, fromIndex?: number) :number {
+    public indexOfItem(obj: T, fromIndex?: number) :number {
         if (fromIndex == null) {
             fromIndex = 0;
         } else if (fromIndex < 0) {

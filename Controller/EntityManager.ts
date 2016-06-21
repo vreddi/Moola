@@ -22,9 +22,9 @@ export class EntityManager{
 
         var total : number = 0;
         
-        for(var index = 0; index < this.Entities.Count(); index++){
+        for(var index = 0; index < this.Entities.count(); index++){
 
-            var row : Entity.Entity = this.Entities.GetItem(index);        
+            var row : Entity.Entity = this.Entities.getItem(index);        
             if(row.isExpenditure){
 
                 total = total + row.cost.value;
@@ -42,9 +42,9 @@ export class EntityManager{
 
         var total : number = 0;
 
-        for(var index = 0; index < this.Entities.Count(); index++){
+        for(var index = 0; index < this.Entities.count(); index++){
 
-            var row : Entity.Entity = this.Entities.GetItem(index);        
+            var row : Entity.Entity = this.Entities.getItem(index);        
             if(row.isEarning){
                 
                 total = total + row.cost.value;
@@ -52,5 +52,31 @@ export class EntityManager{
         }
         
         return total;
+    }
+
+    /**
+     * Get total expenditure subtracted from total earnings
+     * @returns: Net Amount (number)
+     */
+    public getNetAmount(){
+
+        return this.getTotalEarning() - this.getTotalExpenditure();
+    }
+
+    /**
+     * Sort the collection of entities in ascending order of cost (earning or expenditure)
+     */
+    public sortByAscendingCost(){
+
+        this.Entities.sort();
+    }
+
+    /**
+     * Sort the collection of entities in descending order of cost (earning or expenditure)
+     */
+    public sortByDescendingCost(){
+
+        this.Entities.sort();
+        this.Entities.reverse();
     }
 }
