@@ -1,0 +1,19 @@
+{
+  "name": "moola",
+  "version": "1.0.0",
+  "description": "[![Stories in Pending%20Issues](https://badge.waffle.io/vreddi/Moola.png?label=pending%20issue&title=Pending%20Issues)](https://waffle.io/vreddi/Moola) [![Stories in In%20Progress](https://badge.waffle.io/vreddi/Moola.png?label=In%20Progress&title=In%20Progress)](https://waffle.io/vreddi/Moola)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vreddi/Moola.git"
+  },
+  "author": "Vishrut Reddi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vreddi/Moola/issues"
+  },
+  "homepage": "https://github.com/vreddi/Moola#readme"
+}
