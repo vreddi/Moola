@@ -1,4 +1,4 @@
-/// <reference path="../Definations/all.d.ts" />
+/// <reference path="../Definitions/all.d.ts" />
 import Date = require("./Date");
 import Cost = require("./Cost");
 import Item = require("./Item");
