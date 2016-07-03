@@ -1,11 +1,11 @@
-./Script/Controller/*.js
+Script/Controller/*.js
 
-./Script/Model/*.js
+Script/Model/*.js
 
-./Script/Definition/*.js
+Script/Definition/*.js
 
-./Script/Controller/*.js.map
+Script/Controller/*.js.map
 
-./Script/Model/*.js.map
+Script/Model/*.js.map
 
-./Script/Definition/*.js.map
+Script/Definition/*.js.map
