@@ -126,7 +126,7 @@ export class DateInfo{
      */
     public static totalWeekendsBetweenDates(start : DateInfo, end : DateInfo){
 
-        var totalWeekendDays = totalWeekendDays(start, end);
+        var totalWeekendDays : number = DateInfo.totalWeekendDaysBetweenDates(start, end);
         var startJDN : number = start.getJulianDayNumber();
         var endJDN : number = end.getJulianDayNumber();
         var startW : number = startJDN % 7;
@@ -159,6 +159,8 @@ export class DateInfo{
             }
 
         }
+
+        return weekendDaysCount;
     }
 
     /**
@@ -180,6 +182,8 @@ export class DateInfo{
             }
 
         }
+
+        return weekDayCount;
     }
 
     /**

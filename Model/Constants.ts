@@ -9,7 +9,7 @@ var constant = {
     healthcare : ["protein", "whey", "gym", "sport", "sports", "health", "healthy", "running", "active", "pills", "vitamin", "vitamins", "iron", "calcium", "zinc", "omega-3",
                   "creatine", "fitness", "fit"
                  ],
-    miscellaneous : []
+    miscellaneous : ["miscellaneous"]
 };
 
 
