@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outFile": "./Script/moola.js",
+        "sourceMap": true
+    },
+    "files": [
+        "./Controller/EntityManager.ts",
+
+        "./Definitions/all.d.ts",
+        "./Definitions/require.d.ts",
+
+        "./Model/Collections.ts",
+        "./Model/Constants.ts",
+        "./Model/Cost.ts",
+        "./Model/Date.ts",
+        "./Model/Entity.ts",
+        "./Model/Flow.ts",
+        "./Model/Item.ts",
+        "./Model/PaymentMethod.ts",
+        "./Model/Tags.ts"
+    ]
+}

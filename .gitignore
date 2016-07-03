@@ -1,0 +1,3 @@
+./Script/Controller/*.js
+./Script/Model/*.js
+./Script/Definition/*.js
