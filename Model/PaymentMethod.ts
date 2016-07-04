@@ -1,6 +1,11 @@
 
 export class PaymentMethod{
     
-    value : string;
+    fieldValue : string;
+    
+    constructor(value : string){
+
+        this.fieldValue = value;
+    }
 }
 

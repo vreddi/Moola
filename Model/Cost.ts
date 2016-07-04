@@ -1,10 +1,11 @@
 
 export class Cost{
     
-    value : number;
+    fieldValue : string;
+    value : number
     
-    constructor(cost : number){
+    constructor(value : string){
         
-        this.value = cost;
+        this.fieldValue = value;
     }
 }

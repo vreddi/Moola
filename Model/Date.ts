@@ -1,7 +1,7 @@
 
 export class DateInfo{
 
-    value : string;
+    fieldValue : string;
     day : string;
     month : string;
     year : string;
@@ -11,7 +11,7 @@ export class DateInfo{
     
     constructor(date : string){
         
-        this.value = date;
+        this.fieldValue = date;
         
         var dateElements = date.split("/");
         if(dateElements.length == 3){              
@@ -26,7 +26,7 @@ export class DateInfo{
             this.year = dateStringElements[2];
         }
         else{
-            this.value = undefined;
+            this.fieldValue = undefined;
             this.day = undefined;
             this.month = undefined;
             this.year = undefined;
@@ -41,7 +41,7 @@ export class DateInfo{
      * Given the date number elements for a particular date this method would provide the respective 
      * day string elements
      * 
-     *  @param: Day number Element
+     *  @param : Day number Element
      *  @param : Month number element
      *  @param : year number element
      *  @returns : Array of date string elements (Array<string>)

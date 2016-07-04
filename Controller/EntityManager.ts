@@ -1,5 +1,22 @@
 import Entity = require("../Model/Entity");
 import Collection = require("../Model/Collections");
+import Parser = require("../Model/Parser");
+
+document.getElementById("openFile").addEventListener('change', function(){
+
+    var fr = new FileReader();
+
+
+    fr.onload = function(){
+        document.getElementById("fileContents").textContent = this.result;
+        var p = new Parser.Parser();
+        console.log(p.csvToJson(document.getElementById("fileContents").textContent));
+    }
+    
+    fr.readAsText(this.files[0]);
+
+
+})
 
 /**
  * Entity Manager manages a collection of entites and pertains alls its 
