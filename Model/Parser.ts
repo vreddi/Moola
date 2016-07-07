@@ -1,16 +1,17 @@
-/// <reference path="../Definitions/all.d.ts" />
+/// <reference path="../Definitions/all.d.ts" />\
+
 import Date = require("./Date");
-import Cost = require("./Cost");
 import Item = require("./Item");
+import Cost = require("./Cost");
 import Flow = require("./Flow");
-import PaymentMethod = require("./PaymentMethod");
 import Tags = require("./Tags");
+import PaymentMethod = require("./PaymentMethod");
+
 import Entity = require("./Entity");
 
 export class Parser{
-    
     fileName : string;
-
+    
     constructor(){
         
     }
@@ -29,7 +30,6 @@ export class Parser{
         // Get field names from the header
         var header = lines[0].split(",");
 
-        console.log(lines.length);
         var result : any = [];
 
         for(var i : number = 1; i < lines.length; i++){

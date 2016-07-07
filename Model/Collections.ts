@@ -1,5 +1,5 @@
 //A typescript implementation of a generic Collection
-export class Collection<T> {
+export class MoolaCollection<T> {
 
     // The underlying array data structure of the collection
     private _items : Array<T> = [];

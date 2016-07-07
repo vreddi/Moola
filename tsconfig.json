@@ -4,6 +4,7 @@
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
+        // "outFile": "./Script/tsc.js",
         "outDir": "./Script",
         "sourceMap": true
     },

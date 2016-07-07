@@ -1,3 +1,4 @@
+
 var constant = {
     food : ["restaurant", "lunch", "dinner", "menu", "grub", "meal", "groceries", "takeout", "take-out", "bite", "entree", "drink", "snack", "cuisine"], 
     personal : ["clothes", "shorts", "jeans", "t-shirt", "tshirt", "garments", "electronics", "bags", "shades", "jewelry","hats"],
