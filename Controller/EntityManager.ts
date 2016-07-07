@@ -14,7 +14,30 @@ export class EntityManager{
 
     constructor(Entities : Collection.MoolaCollection<Entity.Entity>){
         
+        //this.Entities = Entities;
         this.Entities = Entities;
+
+        console.log("Total Entities: " + this.Entities.count());
+        console.log(this.Entities);
+        // Clean the data
+        for(var index = 0; index < this.Entities.count(); index++){
+
+            var row : Entity.Entity = this.Entities.getItem(index);    
+
+            // The row contains crucial elements as undefined 
+            if(row.cost.fieldValue == undefined || row.item.fieldValue == undefined || row.date.fieldValue == undefined){
+                console.log("Deleting: Cost = " + row.cost.fieldValue + " Item = " + row.item.fieldValue + " Date = " + row.date.fieldValue);
+                this.Entities.delete(index);
+            }   
+            else{
+
+                if(row.cost.fieldValue.length == 0 || row.date.fieldValue.length == 0 || row.item.fieldValue.length == 0){
+                    console.log("Deleting: " + row.cost.fieldValue);
+                    //this.Entities.delete(index);
+                }
+            }
+            
+        }
     }
 
     /**
@@ -28,7 +51,7 @@ export class EntityManager{
         for(var index = 0; index < this.Entities.count(); index++){
 
             var row : Entity.Entity = this.Entities.getItem(index);        
-            if(row.isExpenditure){
+            if(row.isExpenditure() && row.cost.value != undefined){
 
                 total = total + row.cost.value;
             }
@@ -48,7 +71,7 @@ export class EntityManager{
         for(var index = 0; index < this.Entities.count(); index++){
 
             var row : Entity.Entity = this.Entities.getItem(index);        
-            if(row.isEarning){
+            if(row.isEarning() && row.cost.value != undefined){
                 
                 total = total + row.cost.value;
             }

@@ -12,6 +12,7 @@
         "./Controller/EntityManager.ts",
 
         "./Definitions/all.d.ts",
+        "./Definitions/d3.d.ts",
         "./Definitions/require.d.ts",
 
         "./Model/Collections.ts",
@@ -23,6 +24,7 @@
         "./Model/Item.ts",
         "./Model/Parser.ts",
         "./Model/PaymentMethod.ts",
-        "./Model/Tags.ts"
+        "./Model/Tags.ts",
+        "./Model/Visualizer.ts"
     ]
 }

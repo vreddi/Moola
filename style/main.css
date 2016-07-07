@@ -1,10 +1,15 @@
 /*This CSS files deals with the stying of the main opening web-page. */
 
-body{
+body {
 	width: 100%;
 	height: 100%;
+	font-size: 13px;
+	line-height: 20px;
+	background: url('https://dl.dropbox.com/u/65958930/OLR/dust.png') center center;
+	text-align: enter;
 }
 
 .content{
-
+	margin-top: 20%;
+	text-align: center;
 }
