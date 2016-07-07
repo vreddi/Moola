@@ -95,7 +95,6 @@ export class Parser{
         // Get field names from the header
         var header = lines[0].split(",");
 
-        console.log(lines.length);
         var result : any = [];
 
         for(var i : number = 1; i < lines.length; i++){

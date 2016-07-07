@@ -1,19 +1,34 @@
 console.log('Hello Developer!');
-define(['Parser'], function(Parser){
+var a = "";
+var v = "";
+define(['Parser', 'jquery', 'Visualizer'], function(Parser, $, V){
 
+    /**
+     * This function gets rid of all the content from the webpage.
+     * This visually presents a blank screen (exception ios the navbar).
+     */
+    function clearScreen(){
+
+        $('body .content').empty();
+    }
+    
     // Callback for uploading a csv file to parse
-    document.getElementById("openFile").addEventListener('change', function(){
+    document.getElementById("upload").addEventListener('change', function(){
         var fr = new FileReader();
         fr.onload = function(){
             var p = new Parser.Parser();
-            console.log(p.csvToJson(this.result));
+            v = new V.Visualizer(this.result);
+            a = p.csvToJson(this.result)
         }
-
         fr.readAsText(this.files[0]);
+        clearScreen();
     });
 });
 
 
 
+    
 
-//# sourceMappingURL=Callbacks.js.map
+
+
+

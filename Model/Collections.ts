@@ -4,6 +4,11 @@ export class MoolaCollection<T> {
     // The underlying array data structure of the collection
     private _items : Array<T> = [];
 
+    constructor(item : Array<T>){
+
+        this._items = item;
+    }
+
     // Get the collection as an array
     public getItems() {
         return this._items;

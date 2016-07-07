@@ -4,13 +4,8 @@ requirejs.config({
     baseUrl: 'Script',
 
     paths: {
-		jquery: [
-			'https://code.jquery.com/jquery-2.2.0.min.js'
-		],
-		bootstrap: [
-			'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'
-		],
 
+		jquery: 'External/jquery-2.2.4.min',
 		//Moola modules
 		Date: 'Model/Date',
 		Cost: 'Model/Cost',
@@ -22,16 +17,8 @@ requirejs.config({
 		Parser: 'Model/Parser',
 		Collections: 'Model/Collections',
 		Constants: 'Model/Constants',
+		Visualizer: 'Model/Visualizer',
 		EntityManager: 'Controller/EntityManager'
     }
 });
 
-
-/**
- * This function gets rid of all the content from the webpage.
- * This visually presents a blank screen (exception ios the navbar).
- */
-function clearScreen(){
-
-	$('body .content').empty();
-}

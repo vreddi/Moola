@@ -6,8 +6,14 @@ export class Tags{
 
     constructor(value : string){
         
-        this.value = value;
-        this.tags = value.split(",");
+        if(value != undefined){
+            this.value = value;
+            this.tags = value.split(",");
+        }
+        else{
+            this.value = "";
+            this.tags = [];
+        }
     }
 }
 

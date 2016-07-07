@@ -6,8 +6,15 @@ export class Flow{
     
     constructor(value : string){
 
-        this.fieldValue = value;
-        this.isExpense = this.isExpenditure();
+        if(value != undefined){
+
+            this.fieldValue = value;
+            this.isExpense = this.isExpenditure();
+        }
+        else{
+            this.fieldValue = "";
+            this.isExpense = undefined;
+        }
     }
 
     /**
