@@ -2,11 +2,11 @@
 export class Flow{
 
     isExpense : boolean;
-    value : string;
+    fieldValue : string;
     
     constructor(value : string){
 
-        this.value = value;
+        this.fieldValue = value;
         this.isExpense = this.isExpenditure();
     }
 
@@ -16,7 +16,7 @@ export class Flow{
      */
     public isExpenditure(){
         
-        if(this.value.toLowerCase() === "out"){            
+        if(this.fieldValue.toLowerCase() === "out"){            
             return true;
         }
         
@@ -29,7 +29,7 @@ export class Flow{
      */
     public isEarning(){
         
-        if(this.value.toLowerCase() === "in"){           
+        if(this.fieldValue.toLowerCase() === "in"){           
             return true;
         }
         

@@ -15,11 +15,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 	<!-- Include Relevant Scripts -->
-	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="script/shim.js"></script>
-	<script lang="javascript" src="script/xlsx.js"></script>
-	<script src="script/main.js"></script>
+	<script data-main="Script/main" src="Script/require.js"></script>
+
 
 </head>
 
@@ -43,9 +40,18 @@
 
 	<div class=content>
 
+		<input type="file" id="openFile" />
 
 	</div>
 
+	<script>
+		require(['main'], function(){
+				
+				require(['Callbacks']);
+
+		});
+		
+	</script>
 </body>
 
 </html>

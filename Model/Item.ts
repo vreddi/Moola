@@ -1,6 +1,11 @@
 
 export class Item{
     
-    value : string;
+    fieldValue : string;
+    
+    constructor(value : string){
+
+        this.fieldValue = value;
+    }
 }
 

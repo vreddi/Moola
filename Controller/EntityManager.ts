@@ -1,5 +1,8 @@
+/// <reference path="../Definitions/all.d.ts" />
+
 import Entity = require("../Model/Entity");
 import Collection = require("../Model/Collections");
+import Parser = require("../Model/Parser");
 
 /**
  * Entity Manager manages a collection of entites and pertains alls its 
@@ -7,9 +10,9 @@ import Collection = require("../Model/Collections");
  */
 export class EntityManager{
 
-    Entities : Collection.Collection<Entity.Entity>;
+    Entities : Collection.MoolaCollection<Entity.Entity>;
 
-    constructor(Entities : Collection.Collection<Entity.Entity>){
+    constructor(Entities : Collection.MoolaCollection<Entity.Entity>){
         
         this.Entities = Entities;
     }
