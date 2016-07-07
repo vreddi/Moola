@@ -18,7 +18,8 @@ requirejs.config({
 		Collections: 'Model/Collections',
 		Constants: 'Model/Constants',
 		Visualizer: 'Model/Visualizer',
-		EntityManager: 'Controller/EntityManager'
+		EntityManager: 'Controller/EntityManager',
+		"../Controller/EntityManager" : 'Controller/EntityManager'
     }
 });
 
