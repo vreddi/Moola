@@ -14,9 +14,11 @@ export class DateInfo{
         this.fieldValue = date;
         
         var dateElements = date.split("/");
-        if(dateElements.length == 3){              
-            this.dayNumber = Number(dateElements[0]);
-            this.monthNumber = Number(dateElements[1]);
+        if(dateElements.length == 3){     
+
+            // American standards of writing date i.e Month/Day/Year        
+            this.dayNumber = Number(dateElements[1]);
+            this.monthNumber = Number(dateElements[0]);
             this.yearNumber = Number(dateElements[2]);
             
             var dateStringElements : Array<string> = DateInfo.getDateStringElements(this.dayNumber, this.monthNumber, this.yearNumber);

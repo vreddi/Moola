@@ -175,10 +175,8 @@ export class EntityManager{
             if(entity.date.yearNumber == null || isNaN(entity.date.yearNumber) || entity.date.yearNumber == undefined){
                 continue;
             }
-
+            
             if(currMonthNum != entity.date.monthNumber || currYearNum != entity.date.yearNumber){
-
-                monthCount++;
                 currMonthNum = entity.date.monthNumber;
                 currYearNum = entity.date.yearNumber;
             }
