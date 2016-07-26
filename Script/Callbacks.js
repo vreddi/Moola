@@ -1,7 +1,8 @@
 console.log('Hello Developer!');
 var a = "";
 var v = "";
-define(['Parser', 'jquery', 'Visualizer'], function(Parser, $, V){
+var d3 = '';
+define(['d3', 'Parser', 'Visualizer'], function(d3bitch, Parser, V){
 
     /**
      * This function gets rid of all the content from the webpage.

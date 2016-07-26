@@ -23,8 +23,8 @@ export class DateInfo{
             
             var dateStringElements : Array<string> = DateInfo.getDateStringElements(this.dayNumber, this.monthNumber, this.yearNumber);
             
-            this.month = dateStringElements[0];
-            this.day = dateStringElements[1];
+            this.month = dateStringElements[1];
+            this.day = dateStringElements[0];
             this.year = dateStringElements[2];
         }
         else{

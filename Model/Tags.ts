@@ -6,8 +6,9 @@ export class Tags{
 
     constructor(value : string){
         
-        if(value != undefined){
+        if(value != undefined && value != null && value != ""){
             this.value = value;
+            this.value.replace('""', '"');
             this.tags = value.split(",");
         }
         else{
