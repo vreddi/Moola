@@ -25,6 +25,7 @@
         "./Model/Parser.ts",
         "./Model/PaymentMethod.ts",
         "./Model/Tags.ts",
-        "./Model/Visualizer.ts"
+        "./Model/Visualizer.ts",
+        "./Model/BarChart"
     ]
 }

@@ -13,3 +13,10 @@ body {
 	margin-top: 20%;
 	text-align: center;
 }
+
+svg{
+	background-color: antiquewhite;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}

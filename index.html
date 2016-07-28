@@ -4,7 +4,7 @@
 
 <head>
 	<title>Moola</title>
-
+	<meta charset="UTF-8">
 	<!-- Include Style -->
 	<link rel="stylesheet" type="text/css" href="style/main.css">
 
@@ -48,10 +48,10 @@
 	</div>
 
 	<script>
-		require(['main'], function(){
-				
-				require(['Callbacks']);
-
+		require(['main'], function(M){
+				require(['jquery'], function($){
+					require(['Callbacks']);
+				})
 		});
 		
 	</script>
