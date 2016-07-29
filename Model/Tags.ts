@@ -4,12 +4,14 @@ export class Tags{
     value : string;
     tags : Array<string>;
 
-    constructor(value : string){
+    constructor(val : string){
         
-        if(value != undefined && value != null && value != ""){
-            this.value = value;
-            this.value.replace('""', '"');
-            this.tags = value.split(",");
+        if(val != undefined && val != null && val != ""){
+            
+            // Remove all the spaces and " from the tags
+            val = val.replace(/ /g, "").replace(/"/g, "");
+            this.value = val;
+            this.tags = val.split(",");
         }
         else{
             this.value = "";
