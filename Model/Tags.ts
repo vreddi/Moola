@@ -1,7 +1,7 @@
 
 export class Tags{
 
-    value : string;
+    fieldValue : string;
     tags : Array<string>;
 
     constructor(val : string){
@@ -10,11 +10,11 @@ export class Tags{
             
             // Remove all the spaces and " from the tags
             val = val.replace(/ /g, "").replace(/"/g, "");
-            this.value = val;
+            this.fieldValue = val;
             this.tags = val.split(",");
         }
         else{
-            this.value = "";
+            this.fieldValue = "";
             this.tags = [];
         }
     }

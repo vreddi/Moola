@@ -2,7 +2,8 @@ console.log('Hello Developer!');
 var a = "";
 var v = "";
 var d3 = '';
-define(['d3', 'Parser', 'Visualizer'], function(d3bitch, Parser, V){
+var c3 = "";
+define(['d3', 'c3', 'Parser', 'Visualizer'], function(d3, c3, Parser, V){
 
     /**
      * This function gets rid of all the content from the webpage.
@@ -18,11 +19,12 @@ define(['d3', 'Parser', 'Visualizer'], function(d3bitch, Parser, V){
         var fr = new FileReader();
         fr.onload = function(){
             var p = new Parser.Parser();
-            v = new V.Visualizer(this.result);
+            v = new V.Visualizer(this.result, d3, c3, $);
             a = p.csvToJson(this.result)
         }
         fr.readAsText(this.files[0]);
         clearScreen();
+        $('.content').append('<div id="monthlyFinanceChart"></div>');
     });
 });
 

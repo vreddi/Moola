@@ -44,7 +44,15 @@ define(["require", "exports", "./Date", "./Item", "./Cost", "./Flow", "./Tags", 
                 var tags;
                 var paymentMethod;
                 for (var j = 0; j < header.length; j++) {
-                    switch (header[j].toLocaleLowerCase()) {
+                    if (header[j].toLocaleLowerCase().replace(" ", "")[0] == 'p') {
+                        console.log(header[j].toLocaleLowerCase().replace(" ", ""));
+                        paymentMethod = new PaymentMethod.PaymentMethod(currentLine[j]);
+                    }
+                    switch (header[j].toLocaleLowerCase().replace(" ", "")) {
+                        case "paymentmethod":
+                            console.log("aaaa");
+                            paymentMethod = new PaymentMethod.PaymentMethod(currentLine[j]);
+                            break;
                         case "date":
                             date = new Date.DateInfo(currentLine[j]);
                             break;
@@ -60,10 +68,6 @@ define(["require", "exports", "./Date", "./Item", "./Cost", "./Flow", "./Tags", 
                         case "tags":
                             tags = new Tags.Tags(currentLine[j]);
                             break;
-                        case "payment method":
-                            paymentMethod = new PaymentMethod.PaymentMethod(currentLine[j]);
-                            break;
-                        default:
                     }
                 }
                 var entity = new Entity.Entity(date, item, tags, cost, flow, paymentMethod);
