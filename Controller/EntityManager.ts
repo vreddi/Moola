@@ -177,6 +177,8 @@ export class EntityManager{
             }
             
             if(currMonthNum != entity.date.monthNumber || currYearNum != entity.date.yearNumber){
+                
+                monthCount++;
                 currMonthNum = entity.date.monthNumber;
                 currYearNum = entity.date.yearNumber;
             }
