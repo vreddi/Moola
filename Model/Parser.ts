@@ -111,9 +111,21 @@ export class Parser{
 
             for(var j : number = 0; j < header.length; j++){
 
+                // Added this if because of BUG #25
+                if(header[j].toLocaleLowerCase().replace(" ", "")[0] == 'p'){
+
+                    console.log(header[j].toLocaleLowerCase().replace(" ", ""));
+                    paymentMethod = new PaymentMethod.PaymentMethod(currentLine[j]);
+                }
                 // Creating entity components
-                switch(header[j].toLocaleLowerCase()){
+                switch(header[j].toLocaleLowerCase().replace(" ", "")){
                     
+                    // Investigate Later: Not Working 
+                    // Not going inside this case
+                    // case "paymentmethod":
+                    //     paymentMethod = new PaymentMethod.PaymentMethod(currentLine[j]);
+                    //     break;
+
                     case "date":
                         date = new Date.DateInfo(currentLine[j]);
                         break;
@@ -134,11 +146,6 @@ export class Parser{
                         tags = new Tags.Tags(currentLine[j]);
                         break;
 
-                    case "payment method":
-                        paymentMethod = new PaymentMethod.PaymentMethod(currentLine[j]);
-                        break;
-
-                    default:
                 }
             }
 

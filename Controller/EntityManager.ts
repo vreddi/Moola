@@ -25,18 +25,21 @@ export class EntityManager{
             var row : Entity.Entity = this.Entities.getItem(index);    
 
             // The row contains crucial elements as undefined 
-            if(row.cost.fieldValue == undefined || row.item.fieldValue == undefined || row.date.fieldValue == undefined){
-                console.log("Deleting: Cost = " + row.cost.fieldValue + " Item = " + row.item.fieldValue + " Date = " + row.date.fieldValue);
+            if(row.cost.fieldValue == null || row.cost.fieldValue.length == 0){
+                console.log("Deleting as Cost field is undefined or empty: Cost = " + row.cost.fieldValue + " Item = " + row.item.fieldValue + " Date = " + row.date.fieldValue);
                 this.Entities.delete(index);
-            }   
-            else{
-
-                if(row.cost.fieldValue.length == 0 || row.date.fieldValue.length == 0 || row.item.fieldValue.length == 0){
-                    console.log("Deleting: " + row.cost.fieldValue);
-                    //this.Entities.delete(index);
-                }
+                index--;
             }
-            
+            else if(row.item.fieldValue == undefined || row.item.fieldValue.length == 0){
+                console.log("Deleting as Item field is undefined or empty: Cost = " + row.cost.fieldValue + " Item = " + row.item.fieldValue + " Date = " + row.date.fieldValue);
+                this.Entities.delete(index);
+                index--;
+            }
+            else if(row.date.fieldValue == undefined || row.date.fieldValue.length == 0){
+                console.log("Deleting as Date field is undefined or empty: Cost = " + row.cost.fieldValue + " Item = " + row.item.fieldValue + " Date = " + row.date.fieldValue);
+                this.Entities.delete(index);
+                index--;
+            }
         }
     }
 
@@ -177,6 +180,8 @@ export class EntityManager{
             }
             
             if(currMonthNum != entity.date.monthNumber || currYearNum != entity.date.yearNumber){
+                
+                monthCount++;
                 currMonthNum = entity.date.monthNumber;
                 currYearNum = entity.date.yearNumber;
             }
@@ -213,5 +218,27 @@ export class EntityManager{
         }
 
         return yearCount;
+    }
+
+    /**
+     * Provides with a list of all the entities, expenditures and earnings from a certain
+     * month of a certain year.
+     * @returns: Array of Entities from a certain month (Array<Entity.Entity>)
+     */
+    public getAllMonthEntities(monthNumber : number, yearNumber: number){
+
+        var allEntities = this.Entities;
+        var result : Array<Entity.Entity> = [];
+
+        for(var index = 0; index < this.Entities.count(); index++){
+
+            var entitiy = this.Entities.getItem(index);
+            
+            if(entitiy.date.monthNumber == monthNumber && entitiy.date.yearNumber == yearNumber){
+                result.push(entitiy);
+            }
+        }
+
+        return result;
     }
 }
