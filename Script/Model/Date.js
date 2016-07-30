@@ -1,4 +1,4 @@
-define(["require", "exports"], function (require, exports) {
+define(["require", "exports", "./Constants"], function (require, exports, Constants) {
     "use strict";
     var DateInfo = (function () {
         function DateInfo(date) {
@@ -31,7 +31,8 @@ define(["require", "exports"], function (require, exports) {
             var nd = "nd";
             var rd = "rd";
             var th = "th";
-            var monthLibrary = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var ConstantsLibrary = new Constants.Constants();
+            var monthLibrary = ConstantsLibrary.constants["months"];
             dayString = day.toString();
             var dayStringLength = day.toString().length;
             var lastNumber = Number(dayString.charAt(dayStringLength - 1));
@@ -104,7 +105,8 @@ define(["require", "exports"], function (require, exports) {
         DateInfo.prototype.getDayOfTheWeek = function () {
             var jdn = this.getJulianDayNumber();
             var w = (jdn) % 7;
-            var allDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+            var ConstantsLibrary = new Constants.Constants();
+            var allDays = ConstantsLibrary.constants["days"];
             var day = allDays[w];
             return day;
         };

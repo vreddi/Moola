@@ -6,7 +6,8 @@ requirejs.config({
     paths: {
 
 		jquery: 'External/jquery-2.2.4.min',
-		d3: 'External/d3.min',
+		d3: "https://d3js.org/d3.v3.min",
+		c3: "External/c3.min",
 		//Moola modules
 		Date: 'Model/Date',
 		Cost: 'Model/Cost',
@@ -21,6 +22,7 @@ requirejs.config({
 		Visualizer: 'Model/Visualizer',
 		EntityManager: 'Controller/EntityManager',
 		"../Controller/EntityManager" : 'Controller/EntityManager',
-		BarChart: 'Model/BarChart'
+		BarChart: 'Model/BarChart',
+		Callbacks: 'Callbacks'
     }
 });

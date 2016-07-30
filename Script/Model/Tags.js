@@ -4,11 +4,11 @@ define(["require", "exports"], function (require, exports) {
         function Tags(val) {
             if (val != undefined && val != null && val != "") {
                 val = val.replace(/ /g, "").replace(/"/g, "");
-                this.value = val;
+                this.fieldValue = val;
                 this.tags = val.split(",");
             }
             else {
-                this.value = "";
+                this.fieldValue = "";
                 this.tags = [];
             }
         }
