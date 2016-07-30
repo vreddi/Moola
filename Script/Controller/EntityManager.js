@@ -7,14 +7,20 @@ define(["require", "exports"], function (require, exports) {
             console.log(this.Entities);
             for (var index = 0; index < this.Entities.count(); index++) {
                 var row = this.Entities.getItem(index);
-                if (row.cost.fieldValue == undefined || row.item.fieldValue == undefined || row.date.fieldValue == undefined) {
-                    console.log("Deleting: Cost = " + row.cost.fieldValue + " Item = " + row.item.fieldValue + " Date = " + row.date.fieldValue);
+                if (row.cost.fieldValue == null || row.cost.fieldValue.length == 0) {
+                    console.log("Deleting as Cost field is undefined or empty: Cost = " + row.cost.fieldValue + " Item = " + row.item.fieldValue + " Date = " + row.date.fieldValue);
                     this.Entities.delete(index);
+                    index--;
                 }
-                else {
-                    if (row.cost.fieldValue.length == 0 || row.date.fieldValue.length == 0 || row.item.fieldValue.length == 0) {
-                        console.log("Deleting: " + row.cost.fieldValue);
-                    }
+                else if (row.item.fieldValue == undefined || row.item.fieldValue.length == 0) {
+                    console.log("Deleting as Item field is undefined or empty: Cost = " + row.cost.fieldValue + " Item = " + row.item.fieldValue + " Date = " + row.date.fieldValue);
+                    this.Entities.delete(index);
+                    index--;
+                }
+                else if (row.date.fieldValue == undefined || row.date.fieldValue.length == 0) {
+                    console.log("Deleting as Date field is undefined or empty: Cost = " + row.cost.fieldValue + " Item = " + row.item.fieldValue + " Date = " + row.date.fieldValue);
+                    this.Entities.delete(index);
+                    index--;
                 }
             }
         }
@@ -86,6 +92,7 @@ define(["require", "exports"], function (require, exports) {
                     continue;
                 }
                 if (currMonthNum != entity.date.monthNumber || currYearNum != entity.date.yearNumber) {
+                    monthCount++;
                     currMonthNum = entity.date.monthNumber;
                     currYearNum = entity.date.yearNumber;
                 }
@@ -106,6 +113,17 @@ define(["require", "exports"], function (require, exports) {
                 }
             }
             return yearCount;
+        };
+        EntityManager.prototype.getAllMonthEntities = function (monthNumber, yearNumber) {
+            var allEntities = this.Entities;
+            var result = [];
+            for (var index = 0; index < this.Entities.count(); index++) {
+                var entitiy = this.Entities.getItem(index);
+                if (entitiy.date.monthNumber == monthNumber && entitiy.date.yearNumber == yearNumber) {
+                    result.push(entitiy);
+                }
+            }
+            return result;
         };
         return EntityManager;
     }());

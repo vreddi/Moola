@@ -1,3 +1,4 @@
+import Constants = require("./Constants");
 
 export class DateInfo{
 
@@ -59,7 +60,8 @@ export class DateInfo{
         var rd : string = "rd";
         var th : string = "th";
         
-        var monthLibrary = ["January" , "February",	"March", "April", "May", "June", "July", "August", "September",	"October", "November", "December"];
+        var ConstantsLibrary = new Constants.Constants();
+        var monthLibrary = ConstantsLibrary.constants["months"];
         
         // Get day string
         dayString = day.toString();
@@ -196,7 +198,8 @@ export class DateInfo{
 
         var jdn : number = this.getJulianDayNumber();
         var w : number = (jdn) % 7;
-        var allDays : Array<string> = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        var ConstantsLibrary = new Constants.Constants();
+        var allDays : Array<string> = ConstantsLibrary.constants["days"];
         var day : string = allDays[w];
 
         return day;
