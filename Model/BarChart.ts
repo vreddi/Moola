@@ -16,14 +16,19 @@ export class BarChart{
         this.dataCollectionManager = dataCollectionManager;
     }
 
-    public renderBarChart(d3: any, c3: any, $ : any, data: any){
+    /**
+     * This method renders a bar chart with all the expenses and earnings shown per month for a particular year.
+     * The chart is also rendered in a specific html location (div with an id? particular class? anything) which 
+     * is specified as a parameter 
+     * */
+    public renderBarChart(d3: any, c3: any, $ : any, data: any, htmlLocation : string, year: number) : void{
         
         var ConstantsLibrary = new Constants.Constants();
         var earning = ['Earning'];
         var expenditure = ['Expenditure'];
         var months = ['x'];
         var dataCollectionManager = this.dataCollectionManager;
-        var curYear = 2016;
+        var curYear = year;
 
         for(var index = 0; index < data.length; index++){
 
@@ -32,6 +37,8 @@ export class BarChart{
             months.push(data[index]["monthName"]);
         }
         
+        $(htmlLocation).append('<div id="chart"></div>');
+        $(htmlLocation).append('<div id="table"></div>')
         var chart = c3.generate({
             bindto: '#chart',
             data: {
