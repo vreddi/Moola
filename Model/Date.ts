@@ -67,20 +67,25 @@ export class DateInfo{
         dayString = day.toString();
         var dayStringLength = day.toString().length;
         var lastNumber = Number(dayString.charAt(dayStringLength - 1));
+        var secondLastNumber = Number(dayString.charAt(dayStringLength - 2));
 
-        switch(lastNumber){
+        if (secondLastNumber === 1) {
+            dayString = dayString + th;
+        }
+        else {
+            switch(lastNumber){
+                case 1: dayString = dayString + st;
+                break;
 
-            case 1: dayString = dayString + st;
-            break;
+                case 2: dayString = dayString + nd;
+                break;
 
-            case 2: dayString = dayString + nd;
-            break;
+                case 3: dayString = dayString + rd;
+                break;
 
-            case 3: dayString = dayString + rd;
-            break;
-
-            default: dayString = dayString + th;
-            break;
+                default: dayString = dayString + th;
+                break;
+            }
         }
 
         // Get month string
