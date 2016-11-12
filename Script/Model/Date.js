@@ -36,19 +36,25 @@ define(["require", "exports", "./Constants"], function (require, exports, Consta
             dayString = day.toString();
             var dayStringLength = day.toString().length;
             var lastNumber = Number(dayString.charAt(dayStringLength - 1));
-            switch (lastNumber) {
-                case 1:
-                    dayString = dayString + st;
-                    break;
-                case 2:
-                    dayString = dayString + nd;
-                    break;
-                case 3:
-                    dayString = dayString + rd;
-                    break;
-                default:
-                    dayString = dayString + th;
-                    break;
+            var secondLastNumber = Number(dayString.charAt(dayStringLength - 2));
+            if (secondLastNumber === 1) {
+                dayString = dayString + th;
+            }
+            else {
+                switch (lastNumber) {
+                    case 1:
+                        dayString = dayString + st;
+                        break;
+                    case 2:
+                        dayString = dayString + nd;
+                        break;
+                    case 3:
+                        dayString = dayString + rd;
+                        break;
+                    default:
+                        dayString = dayString + th;
+                        break;
+                }
             }
             monthString = monthLibrary[month - 1];
             yearString = year.toString();
