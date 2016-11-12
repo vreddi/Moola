@@ -49,10 +49,6 @@ define(["require", "exports", "./Date", "./Item", "./Cost", "./Flow", "./Tags", 
                         paymentMethod = new PaymentMethod.PaymentMethod(currentLine[j]);
                     }
                     switch (header[j].toLocaleLowerCase().replace(" ", "")) {
-                        case "paymentmethod":
-                            console.log("aaaa");
-                            paymentMethod = new PaymentMethod.PaymentMethod(currentLine[j]);
-                            break;
                         case "date":
                             date = new Date.DateInfo(currentLine[j]);
                             break;
