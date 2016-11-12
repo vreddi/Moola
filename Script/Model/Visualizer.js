@@ -8,7 +8,6 @@ define(["require", "exports", "./Parser", "./Collections", "../Controller/Entity
             this.dataCollection = p.csvToEntityManager(this.csvResult);
             this.dataCollectionManager = new EntityManager.EntityManager(new Collection.MoolaCollection(this.dataCollection));
             this.barChart = new BarChart.BarChart(d3, c3, $, this.dataCollectionManager);
-            this.showMonthlyFinanceSummaryBarChart();
         }
         Visualizer.prototype.createJsonForMonthlyFinances = function () {
             var ConstantsLibrary = new Constants.Constants();
@@ -40,7 +39,15 @@ define(["require", "exports", "./Parser", "./Collections", "../Controller/Entity
             return data;
         };
         Visualizer.prototype.showMonthlyFinanceSummaryBarChart = function () {
-            this.barChart.renderBarChart(this.barChart.d3, this.barChart.c3, this.barChart.$, this.createJsonForMonthlyFinances());
+            this.barChart.renderBarChart(this.barChart.d3, this.barChart.c3, this.barChart.$, this.createJsonForMonthlyFinances(), "body", 2016);
+        };
+        Visualizer.prototype.renderMoneyCard = function ($, type, value, title, htmlLocation) {
+            if (type === "in") {
+                $(htmlLocation).append('<div class="card"> <div class="cardEarningSymbol"><i class="fa fa-angle-double-up" aria-hidden="true"></i></div> <div class="cardTitle">' + title + '</div> <div class="cardValue">' + value + '</div>');
+            }
+            else {
+                $(htmlLocation).append('<div class="card"> <div class="cardExpenditureSymbol"><i class="fa fa-angle-double-down" aria-hidden="true"></i></div> <div class="cardTitle">' + title + '</div> <div class="cardValue">' + value + '</div>');
+            }
         };
         return Visualizer;
     }());

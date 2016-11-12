@@ -20,11 +20,13 @@ define(['d3', 'c3', 'Parser', 'Visualizer'], function(d3, c3, Parser, V){
         fr.onload = function(){
             var p = new Parser.Parser();
             v = new V.Visualizer(this.result, d3, c3, $);
-            a = p.csvToJson(this.result)
+
+            //Used for debugging on console for now
+            // Remove this later
+            a = p.csvToJson(this.result); 
         }
         fr.readAsText(this.files[0]);
         clearScreen();
-        $('.content').append('<div id="monthlyFinanceChart"></div>');
     });
 });
 

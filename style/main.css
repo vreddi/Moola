@@ -5,18 +5,68 @@ body {
 	height: 100%;
 	font-size: 13px;
 	line-height: 20px;
-	background: url('https://dl.dropbox.com/u/65958930/OLR/dust.png') center center;
+	background: #FFFFFF;
 	text-align: enter;
 }
 
 .content{
-	margin-top: 20%;
-	text-align: center;
+	margin: 7%;
+	/*text-align: center;*/
 }
 
 svg{
-	background-color: antiquewhite;
+	background-color: transparent;
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
 }
+
+.card{
+	width: 250px;
+    height: 250px;
+    display: inline-block;
+    position: relative;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    box-shadow: 10px 10px 8px #777;
+    background-color: #f2f2f2;
+}
+
+.cardValue{
+	font-size: 75px;
+    color: #555555;
+    bottom: 0px; 
+    right: 0px;
+    display: block;
+    padding-bottom: 15%;
+    padding-right: 10%;
+    position: absolute;
+}
+
+.cardTitle{
+	font-size: 30px;
+    color: #555555;
+    bottom: 0px; 
+    right: 0px;
+    display: block;
+    padding-bottom: 5%;
+    padding-right: 10%;
+    position: absolute;
+}
+
+.cardEarningSymbol{
+    float: left;
+    padding-left: 0.3em;
+    font-size: 3.9em;
+    color: #43A047;
+}
+
+.cardExpenditureSymbol{
+    float: left;
+    padding-left: 0.3em;
+    font-size: 3.9em;
+    color: #E53935;
+}
+

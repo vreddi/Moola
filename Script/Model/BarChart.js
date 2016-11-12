@@ -7,18 +7,20 @@ define(["require", "exports", "./Constants"], function (require, exports, Consta
             this.$ = $;
             this.dataCollectionManager = dataCollectionManager;
         }
-        BarChart.prototype.renderBarChart = function (d3, c3, $, data) {
+        BarChart.prototype.renderBarChart = function (d3, c3, $, data, htmlLocation, year) {
             var ConstantsLibrary = new Constants.Constants();
             var earning = ['Earning'];
             var expenditure = ['Expenditure'];
             var months = ['x'];
             var dataCollectionManager = this.dataCollectionManager;
-            var curYear = 2016;
+            var curYear = year;
             for (var index = 0; index < data.length; index++) {
                 earning.push(data[index]["earning"]);
                 expenditure.push(data[index]["expenditure"]);
                 months.push(data[index]["monthName"]);
             }
+            $(htmlLocation).append('<div id="chart"></div>');
+            $(htmlLocation).append('<div id="table"></div>');
             var chart = c3.generate({
                 bindto: '#chart',
                 data: {
