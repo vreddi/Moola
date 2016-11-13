@@ -39,6 +39,8 @@ export class BarChart{
             months.push(monthFinanceEntities[index].monthName);
         }
 
+        // TODO: Due to appending it does not go inside the proper place inside the htmlLocation
+        //       Always goes inside the end. Issue Created #33
         $(htmlLocation).append('<div id="chart"></div>');
         $(htmlLocation).append('<div id="table"></div>')
 

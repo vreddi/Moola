@@ -10,8 +10,8 @@ body {
 }
 
 .content{
-	margin: 7%;
-	/*text-align: center;*/
+	margin-top: 20%;
+	text-align: center;
 }
 
 svg{
@@ -37,7 +37,7 @@ svg{
 .cardValue{
 	font-size: 75px;
     color: #555555;
-    bottom: 0px; 
+    bottom: 0px;
     right: 0px;
     display: block;
     padding-bottom: 15%;
@@ -48,7 +48,7 @@ svg{
 .cardTitle{
 	font-size: 30px;
     color: #555555;
-    bottom: 0px; 
+    bottom: 0px;
     right: 0px;
     display: block;
     padding-bottom: 5%;
