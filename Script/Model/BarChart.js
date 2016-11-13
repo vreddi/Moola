@@ -1,4 +1,4 @@
-define(["require", "exports", "./Constants"], function (require, exports, Constants) {
+define(["require", "exports", "./Constants"], function (require, exports, Constants_1) {
     "use strict";
     var BarChart = (function () {
         function BarChart(d3, c3, $, dataCollectionManager) {
@@ -7,18 +7,15 @@ define(["require", "exports", "./Constants"], function (require, exports, Consta
             this.$ = $;
             this.dataCollectionManager = dataCollectionManager;
         }
-        BarChart.prototype.renderBarChart = function (d3, c3, $, data) {
-            var ConstantsLibrary = new Constants.Constants();
-            var earning = ['Earning'];
-            var expenditure = ['Expenditure'];
-            var months = ['x'];
-            var dataCollectionManager = this.dataCollectionManager;
-            var curYear = 2016;
-            for (var index = 0; index < data.length; index++) {
-                earning.push(data[index]["earning"]);
-                expenditure.push(data[index]["expenditure"]);
-                months.push(data[index]["monthName"]);
+        BarChart.prototype.RenderBarChart = function (d3, c3, $, monthFinanceEntities, htmlLocation, year) {
+            var constantsLibrary = new Constants_1.Constants(), earning = ['Earning'], expenditure = ['Expenditure'], dataCollectionManager = this.dataCollectionManager, months = ['x'], curYear = year;
+            for (var index = 0; index < monthFinanceEntities.length; index++) {
+                earning.push(monthFinanceEntities[index].earning);
+                expenditure.push(monthFinanceEntities[index].expenditure);
+                months.push(monthFinanceEntities[index].monthName);
             }
+            $(htmlLocation).append('<div id="chart"></div>');
+            $(htmlLocation).append('<div id="table"></div>');
             var chart = c3.generate({
                 bindto: '#chart',
                 data: {
@@ -29,6 +26,7 @@ define(["require", "exports", "./Constants"], function (require, exports, Consta
                         expenditure
                     ],
                     onclick: function (d, element) {
+                        var monthEntities = dataCollectionManager.GetAllMonthEntities(d["x"] + 1, curYear);
                         $("#table").empty();
                         $("#table").append('<table class="table table-bordered">');
                         $("table").append('<thead>');
@@ -42,7 +40,6 @@ define(["require", "exports", "./Constants"], function (require, exports, Consta
                         $("table thead").append('</tr>');
                         $("table").append('</thead>');
                         $("table").append('<tbody>');
-                        var monthEntities = dataCollectionManager.getAllMonthEntities(d["x"] + 1, curYear);
                         for (var index = 0; index < monthEntities.length; index++) {
                             $("#table table tbody").append('<tr>');
                             $("table tbody tr:last-of-type").append('<td>' + monthEntities[index].date.day + ' ' + monthEntities[index].date.month + ' ' + monthEntities[index].date.year + '</td>');

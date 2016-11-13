@@ -1,74 +1,55 @@
 /// <reference path="../Definitions/d3.d.ts" />
-import Parser = require("./Parser");
-import Entity = require("./Entity");
-import Collection = require("./Collections");
-import EntityManager = require("../Controller/EntityManager")
-import BarChart = require("./BarChart");
-import Constants = require("./Constants");
+
+import { Parser } from "./Parser";
+import { Entity } from "./Entity";
+import { MoolaCollection } from "./Collections";
+import { EntityManager } from "../Controller/EntityManager";
+import { BarChart }  from "./BarChart";
+import { Constants } from "./Constants";
+import { MonthlyFinanceEntity } from "./MonthlyFinanceEntity";
+import { HtmlElement } from "./HtmlElement";
 
 export class Visualizer{
 
-    dataCollection : Array<Entity.Entity>
-    dataCollectionManager : EntityManager.EntityManager;
-    csvResult : string;
-    barChart : BarChart.BarChart;
-    temp: any;
+    dataCollection: Array<Entity>;
+    dataCollectionManager: EntityManager;
+    csvResult: string;
+    barChart: BarChart;
 
-    constructor(csv : string, d3: any, c3: any, $: any){
-        console.log("Hello From the Visualizer!");
-        var p = new Parser.Parser();
+    constructor(csv: string, d3: any, c3: any, $: any){
+
+        let p = new Parser();
         this.csvResult = csv;
-        this.dataCollection = p.csvToEntityManager(this.csvResult);
-        this.dataCollectionManager = new EntityManager.EntityManager(new Collection.MoolaCollection(this.dataCollection));
-        this.barChart = new BarChart.BarChart(d3, c3, $, this.dataCollectionManager);
+        this.dataCollection = p.CsvToEntityManager(this.csvResult);
+        this.dataCollectionManager = new EntityManager(new MoolaCollection(this.dataCollection));
+        this.barChart = new BarChart(d3, c3, $, this.dataCollectionManager);
 
-        this.showMonthlyFinanceSummaryBarChart();
+        // We are not showing the bar chart as soon as the CSV is uploaded (Frontend decision)
+        //this.ShowMonthlyFinanceSummaryBarChart();
     }
 
-    public createJsonForMonthlyFinances(){
+    /**
+     * Renders the C3 bar chart for a particular year in a specified HTML element.
+     */
+    public ShowMonthlyFinanceSummaryBarChart(htmlElement: string, year : number){
 
-        var ConstantsLibrary = new Constants.Constants();
-        var months = ConstantsLibrary.constants["months"];
-        var data: any = [];
-
-        for(var index = 0; index < months.length; index++){
-
-            var obj: any = {};
-
-            obj["monthNumber"] = index + 1;
-            obj["monthName"] = months[index];
-            obj["expenditure"] = 0;
-            obj["earning"] = 0;
-
-            data.push(obj);
-        }
-        this.temp = data;
-
-        for(var index = 0; index < this.dataCollectionManager.Entities.count(); index++){
-
-            var entity: any = {};
-            entity['monthNumber'] = this.dataCollectionManager.Entities.getItem(index).date.monthNumber;
-            if(this.dataCollectionManager.Entities.getItem(index).isEarning()){
-
-                entity['in'] = this.dataCollectionManager.Entities.getItem(index).cost.value;
-                entity['out'] = 0;
-            }
-            else{
-
-                entity['in'] = 0;
-                entity['out'] = this.dataCollectionManager.Entities.getItem(index).cost.value;
-            }
-
-            // Adding up to the total monthly earning/expenditure
-            data[entity["monthNumber"] - 1]["expenditure"] = data[entity["monthNumber"] - 1]["expenditure"] + entity["out"];
-            data[entity["monthNumber"] - 1]["earning"] = data[entity["monthNumber"] - 1]["earning"] + entity["in"];
-        }
-
-        return data;
+        this.barChart.RenderBarChart(this.barChart.d3, this.barChart.c3, this.barChart.$, MonthlyFinanceEntity.CreateMonthlyFinances(this.dataCollectionManager, year), htmlElement, year);
     }
 
-    public showMonthlyFinanceSummaryBarChart(){
+    /**
+     * This renders a money card, either expense card or earnign card showcasing the specified value
+     * and title. The card is rendered in a specified html location such as a div with a particular class
+     * or id.
+     */
+    public RenderMoneyCard($: any, type: string, value: number, title: string, htmlLocation: string){
 
-        this.barChart.renderBarChart(this.barChart.d3, this.barChart.c3, this.barChart.$, this.createJsonForMonthlyFinances());
+        // earning
+        if(type === "in"){
+            $(htmlLocation).append('<div class="card"> <div class="cardEarningSymbol"><i class="fa fa-angle-double-up" aria-hidden="true"></i></div> <div class="cardTitle">' + title + '</div> <div class="cardValue">' + value + '</div>');
+        }
+        // expenditure
+        else{
+            $(htmlLocation).append('<div class="card"> <div class="cardExpenditureSymbol"><i class="fa fa-angle-double-down" aria-hidden="true"></i></div> <div class="cardTitle">' + title + '</div> <div class="cardValue">' + value + '</div>');
+        }
     }
 }

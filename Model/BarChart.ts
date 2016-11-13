@@ -1,38 +1,50 @@
 /// <reference path="../Definitions/d3.d.ts" />
-import Constants = require("./Constants");
-import EntityManager = require("../Controller/EntityManager")
+
+import { Constants } from "./Constants";
+import { EntityManager } from "../Controller/EntityManager";
+import { MonthlyFinanceEntity } from "./MonthlyFinanceEntity";
+
 export class BarChart{
 
-    d3: any;
-    c3: any
-    $ : any;
-    dataCollectionManager : EntityManager.EntityManager;
+    public d3: any;
+    public c3: any
+    public $: any;
+    public dataCollectionManager: EntityManager;
 
-
-    constructor(d3: any, c3: any, $ : any, dataCollectionManager : EntityManager.EntityManager){
+    constructor(d3: any, c3: any, $ : any, dataCollectionManager: EntityManager){
         this.d3 = d3;
         this.c3 = c3;
         this.$ = $;
         this.dataCollectionManager = dataCollectionManager;
     }
 
-    public renderBarChart(d3: any, c3: any, $ : any, data: any){
-        
-        var ConstantsLibrary = new Constants.Constants();
-        var earning = ['Earning'];
-        var expenditure = ['Expenditure'];
-        var months = ['x'];
-        var dataCollectionManager = this.dataCollectionManager;
-        var curYear = 2016;
+    /**
+     * This method renders a bar chart with all the expenses and earnings shown per month for a particular year.
+     * The chart is also rendered in a specific html location (div with an id? particular class? anything) which
+     * is specified as a parameter
+     * */
+    public RenderBarChart(d3: any, c3: any, $ : any, monthFinanceEntities: MonthlyFinanceEntity[], htmlLocation : string, year: number) : void{
 
-        for(var index = 0; index < data.length; index++){
+        let constantsLibrary = new Constants(),
+            earning: (string | number)[] = ['Earning'],
+            expenditure: (string | number)[] = ['Expenditure'],
+            dataCollectionManager = this.dataCollectionManager,    // Used for the onClick callback of the bar-chart
+            months: string[] = ['x'],
+            curYear: number = year;
 
-            earning.push(data[index]["earning"]);
-            expenditure.push(data[index]["expenditure"]);
-            months.push(data[index]["monthName"]);
+        for(let index = 0; index < monthFinanceEntities.length; index++){
+
+            earning.push(monthFinanceEntities[index].earning);
+            expenditure.push(monthFinanceEntities[index].expenditure);
+            months.push(monthFinanceEntities[index].monthName);
         }
-        
-        var chart = c3.generate({
+
+        // TODO: Due to appending it does not go inside the proper place inside the htmlLocation
+        //       Always goes inside the end. Issue Created #33
+        $(htmlLocation).append('<div id="chart"></div>');
+        $(htmlLocation).append('<div id="table"></div>')
+
+        let chart = c3.generate({
             bindto: '#chart',
             data: {
                 x: 'x',
@@ -42,6 +54,8 @@ export class BarChart{
                             expenditure
                         ],
                 onclick: function(d: any, element: any){
+
+                    let monthEntities = dataCollectionManager.GetAllMonthEntities(d["x"] + 1, curYear);
 
                     // Clear the table
                     $("#table").empty();
@@ -57,18 +71,16 @@ export class BarChart{
                                 $("table thead tr").append('<th>Payment Method</th>');
                             $("table thead").append('</tr>');
                         $("table").append('</thead>');
-                    
+
                         $("table").append('<tbody>');
 
-                        var monthEntities = dataCollectionManager.getAllMonthEntities(d["x"] + 1, curYear);
+                        for(let index = 0; index < monthEntities.length; index++){
 
-                        for(var index = 0; index < monthEntities.length; index++){
-                            
                             $("#table table tbody").append('<tr>');
-                                
+
                                 // Not checking for null because it is a required field
                                 $("table tbody tr:last-of-type").append('<td>' + monthEntities[index].date.day + ' ' + monthEntities[index].date.month + ' ' + monthEntities[index].date.year + '</td>');
-                                
+
                                 // Not checking for null because it is a required field
                                 $("table tbody tr:last-of-type").append('<td>' + monthEntities[index].item.fieldValue + '</td>');
 
@@ -78,7 +90,7 @@ export class BarChart{
                                 else{
                                     $("table tbody tr:last-of-type").append('<td>' + monthEntities[index].tags.fieldValue + '</td>');
                                 }
-                                
+
                                 // Not checking for null because it is a required field
                                 $("table tbody tr:last-of-type").append('<td>' + monthEntities[index].cost.fieldValue + '</td>');
 

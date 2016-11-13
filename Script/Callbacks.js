@@ -10,27 +10,28 @@ define(['d3', 'c3', 'Parser', 'Visualizer'], function(d3, c3, Parser, V){
      * This visually presents a blank screen (exception ios the navbar).
      */
     function clearScreen(){
-
         $('body .content').empty();
     }
-    
+
     // Callback for uploading a csv file to parse
     document.getElementById("upload").addEventListener('change', function(){
         var fr = new FileReader();
         fr.onload = function(){
             var p = new Parser.Parser();
             v = new V.Visualizer(this.result, d3, c3, $);
-            a = p.csvToJson(this.result)
+
+            //Used for debugging on console for now
+            // Remove this later
+            a = p.CsvToJson(this.result);
         }
         fr.readAsText(this.files[0]);
         clearScreen();
-        $('.content').append('<div id="monthlyFinanceChart"></div>');
     });
 });
 
 
 
-    
+
 
 
 
