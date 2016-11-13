@@ -1,15 +1,12 @@
-define(["require", "exports", "./Date", "./Item", "./Cost", "./Flow", "./Tags", "./PaymentMethod", "./Entity"], function (require, exports, Date, Item, Cost, Flow, Tags, PaymentMethod, Entity) {
+define(["require", "exports", "./Date", "./Item", "./Cost", "./Flow", "./Tags", "./PaymentMethod", "./Entity"], function (require, exports, Date_1, Item_1, Cost_1, Flow_1, Tags_1, PaymentMethod_1, Entity_1) {
     "use strict";
     var Parser = (function () {
         function Parser() {
         }
-        Parser.prototype.csvToJson = function (csv) {
-            var lines = csv.split("\n");
-            var header = lines[0].split(",");
-            var result = [];
+        Parser.prototype.CsvToJson = function (csv) {
+            var lines = csv.split("\n"), header = lines[0].split(","), result = [];
             for (var i = 1; i < lines.length; i++) {
-                var entityObject = {};
-                var currentLine = lines[i].split(/(?!\B"[^"]*),(?![^"]*"\B)/);
+                var entityObject = {}, currentLine = lines[i].split(/(?!\B"[^"]*),(?![^"]*"\B)/);
                 for (var j = 0; j < header.length; j++) {
                     entityObject[header[j]] = currentLine[j];
                 }
@@ -17,56 +14,50 @@ define(["require", "exports", "./Date", "./Item", "./Cost", "./Flow", "./Tags", 
             }
             return result;
         };
-        Parser.prototype.jsonToEntityManager = function (jsonArray) {
+        Parser.prototype.JsonToEntityManager = function (jsonArray) {
             var result = [];
             for (var i = 0; jsonArray.length; i++) {
-                var date = new Date.DateInfo(jsonArray[i]["Date"]);
-                var item = new Item.Item(jsonArray[i]["Item"]);
-                var cost = new Cost.Cost(jsonArray[i]["Cost"]);
-                var flow = new Flow.Flow(jsonArray[i]["Flow"]);
-                var paymentMethod = new PaymentMethod.PaymentMethod(jsonArray[i]["Payment Method"]);
-                var tags = new Tags.Tags(jsonArray[i]["Tags"]);
-                var entity = new Entity.Entity(date, item, tags, cost, flow, paymentMethod);
+                var date = new Date_1.DateInfo(jsonArray[i]["Date"]);
+                var item = new Item_1.Item(jsonArray[i]["Item"]);
+                var cost = new Cost_1.Cost(jsonArray[i]["Cost"]);
+                var flow = new Flow_1.Flow(jsonArray[i]["Flow"]);
+                var paymentMethod = new PaymentMethod_1.PaymentMethod(jsonArray[i]["Payment Method"]);
+                var tags = new Tags_1.Tags(jsonArray[i]["Tags"]);
+                var entity = new Entity_1.Entity(date, item, tags, cost, flow, paymentMethod);
                 result.push(entity);
             }
             return result;
         };
-        Parser.prototype.csvToEntityManager = function (csv) {
+        Parser.prototype.CsvToEntityManager = function (csv) {
             var lines = csv.split("\n");
             var header = lines[0].split(",");
             var result = [];
             for (var i = 1; i < lines.length; i++) {
                 var currentLine = lines[i].split(/(?!\B"[^"]*),(?![^"]*"\B)/);
-                var date;
-                var item;
-                var cost;
-                var flow;
-                var tags;
-                var paymentMethod;
+                var date, item, cost, flow, tags, paymentMethod;
                 for (var j = 0; j < header.length; j++) {
                     if (header[j].toLocaleLowerCase().replace(" ", "")[0] == 'p') {
-                        console.log(header[j].toLocaleLowerCase().replace(" ", ""));
-                        paymentMethod = new PaymentMethod.PaymentMethod(currentLine[j]);
+                        paymentMethod = new PaymentMethod_1.PaymentMethod(currentLine[j]);
                     }
                     switch (header[j].toLocaleLowerCase().replace(" ", "")) {
                         case "date":
-                            date = new Date.DateInfo(currentLine[j]);
+                            date = new Date_1.DateInfo(currentLine[j]);
                             break;
                         case "item":
-                            item = new Item.Item(currentLine[j]);
+                            item = new Item_1.Item(currentLine[j]);
                             break;
                         case "cost":
-                            cost = new Cost.Cost(currentLine[j]);
+                            cost = new Cost_1.Cost(currentLine[j]);
                             break;
                         case "flow":
-                            flow = new Flow.Flow(currentLine[j]);
+                            flow = new Flow_1.Flow(currentLine[j]);
                             break;
                         case "tags":
-                            tags = new Tags.Tags(currentLine[j]);
+                            tags = new Tags_1.Tags(currentLine[j]);
                             break;
                     }
                 }
-                var entity = new Entity.Entity(date, item, tags, cost, flow, paymentMethod);
+                var entity = new Entity_1.Entity(date, item, tags, cost, flow, paymentMethod);
                 result.push(entity);
             }
             return result;

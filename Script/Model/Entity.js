@@ -9,10 +9,10 @@ define(["require", "exports"], function (require, exports) {
             this.flow = flow;
             this.paymentMethod = paymentMethod;
         }
-        Entity.prototype.isExpenditure = function () {
+        Entity.prototype.IsExpenditure = function () {
             return this.flow.isExpense;
         };
-        Entity.prototype.isEarning = function () {
+        Entity.prototype.IsEarning = function () {
             return !this.flow.isExpense;
         };
         return Entity;

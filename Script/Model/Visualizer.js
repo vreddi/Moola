@@ -1,47 +1,17 @@
-define(["require", "exports", "./Parser", "./Collections", "../Controller/EntityManager", "./BarChart", "./Constants"], function (require, exports, Parser, Collection, EntityManager, BarChart, Constants) {
+define(["require", "exports", "./Parser", "./Collections", "../Controller/EntityManager", "./BarChart", "./MonthlyFinanceEntity"], function (require, exports, Parser_1, Collections_1, EntityManager_1, BarChart_1, MonthlyFinanceEntity_1) {
     "use strict";
     var Visualizer = (function () {
         function Visualizer(csv, d3, c3, $) {
-            console.log("Hello From the Visualizer!");
-            var p = new Parser.Parser();
+            var p = new Parser_1.Parser();
             this.csvResult = csv;
-            this.dataCollection = p.csvToEntityManager(this.csvResult);
-            this.dataCollectionManager = new EntityManager.EntityManager(new Collection.MoolaCollection(this.dataCollection));
-            this.barChart = new BarChart.BarChart(d3, c3, $, this.dataCollectionManager);
+            this.dataCollection = p.CsvToEntityManager(this.csvResult);
+            this.dataCollectionManager = new EntityManager_1.EntityManager(new Collections_1.MoolaCollection(this.dataCollection));
+            this.barChart = new BarChart_1.BarChart(d3, c3, $, this.dataCollectionManager);
         }
-        Visualizer.prototype.createJsonForMonthlyFinances = function () {
-            var ConstantsLibrary = new Constants.Constants();
-            var months = ConstantsLibrary.constants["months"];
-            var data = [];
-            for (var index = 0; index < months.length; index++) {
-                var obj = {};
-                obj["monthNumber"] = index + 1;
-                obj["monthName"] = months[index];
-                obj["expenditure"] = 0;
-                obj["earning"] = 0;
-                data.push(obj);
-            }
-            this.temp = data;
-            for (var index = 0; index < this.dataCollectionManager.Entities.count(); index++) {
-                var entity = {};
-                entity['monthNumber'] = this.dataCollectionManager.Entities.getItem(index).date.monthNumber;
-                if (this.dataCollectionManager.Entities.getItem(index).isEarning()) {
-                    entity['in'] = this.dataCollectionManager.Entities.getItem(index).cost.value;
-                    entity['out'] = 0;
-                }
-                else {
-                    entity['in'] = 0;
-                    entity['out'] = this.dataCollectionManager.Entities.getItem(index).cost.value;
-                }
-                data[entity["monthNumber"] - 1]["expenditure"] = data[entity["monthNumber"] - 1]["expenditure"] + entity["out"];
-                data[entity["monthNumber"] - 1]["earning"] = data[entity["monthNumber"] - 1]["earning"] + entity["in"];
-            }
-            return data;
+        Visualizer.prototype.ShowMonthlyFinanceSummaryBarChart = function (htmlElement, year) {
+            this.barChart.RenderBarChart(this.barChart.d3, this.barChart.c3, this.barChart.$, MonthlyFinanceEntity_1.MonthlyFinanceEntity.CreateMonthlyFinances(this.dataCollectionManager, year), htmlElement, year);
         };
-        Visualizer.prototype.showMonthlyFinanceSummaryBarChart = function () {
-            this.barChart.renderBarChart(this.barChart.d3, this.barChart.c3, this.barChart.$, this.createJsonForMonthlyFinances(), "body", 2016);
-        };
-        Visualizer.prototype.renderMoneyCard = function ($, type, value, title, htmlLocation) {
+        Visualizer.prototype.RenderMoneyCard = function ($, type, value, title, htmlLocation) {
             if (type === "in") {
                 $(htmlLocation).append('<div class="card"> <div class="cardEarningSymbol"><i class="fa fa-angle-double-up" aria-hidden="true"></i></div> <div class="cardTitle">' + title + '</div> <div class="cardValue">' + value + '</div>');
             }

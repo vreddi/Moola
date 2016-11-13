@@ -24,37 +24,37 @@ define(["require", "exports"], function (require, exports) {
                 }
             }
         }
-        EntityManager.prototype.getTotalExpenditure = function () {
+        EntityManager.prototype.GetTotalExpenditure = function () {
             var total = 0;
             for (var index = 0; index < this.Entities.count(); index++) {
                 var row = this.Entities.getItem(index);
-                if (row.isExpenditure() && row.cost.value != undefined) {
+                if (row.IsExpenditure() && row.cost.value != undefined) {
                     total = total + row.cost.value;
                 }
             }
             return total;
         };
-        EntityManager.prototype.getTotalEarning = function () {
+        EntityManager.prototype.GetTotalEarning = function () {
             var total = 0;
             for (var index = 0; index < this.Entities.count(); index++) {
                 var row = this.Entities.getItem(index);
-                if (row.isEarning() && row.cost.value != undefined) {
+                if (row.IsEarning() && row.cost.value != undefined) {
                     total = total + row.cost.value;
                 }
             }
             return total;
         };
-        EntityManager.prototype.getNetAmount = function () {
-            return this.getTotalEarning() - this.getTotalExpenditure();
+        EntityManager.prototype.GetNetAmount = function () {
+            return this.GetTotalEarning() - this.GetTotalExpenditure();
         };
-        EntityManager.prototype.sortByAscendingCost = function () {
+        EntityManager.prototype.SortByAscendingCost = function () {
             this.Entities.sort();
         };
-        EntityManager.prototype.sortByDescendingCost = function () {
+        EntityManager.prototype.SortByDescendingCost = function () {
             this.Entities.sort();
             this.Entities.reverse();
         };
-        EntityManager.prototype.getTotalDays = function () {
+        EntityManager.prototype.GetTotalDays = function () {
             var currDayNum = 0;
             var currMonthNum = 0;
             var currYearNum = 0;
@@ -79,7 +79,7 @@ define(["require", "exports"], function (require, exports) {
             }
             return dayCount;
         };
-        EntityManager.prototype.getTotalMonths = function () {
+        EntityManager.prototype.GetTotalMonths = function () {
             var currMonthNum = 0;
             var currYearNum = 0;
             var monthCount = 0;
@@ -99,7 +99,7 @@ define(["require", "exports"], function (require, exports) {
             }
             return monthCount;
         };
-        EntityManager.prototype.getTotalYears = function () {
+        EntityManager.prototype.GetTotalYears = function () {
             var currYearNum = 0;
             var yearCount = 0;
             for (var index = 0; index < this.Entities.count(); index++) {
@@ -114,7 +114,7 @@ define(["require", "exports"], function (require, exports) {
             }
             return yearCount;
         };
-        EntityManager.prototype.getAllMonthEntities = function (monthNumber, yearNumber) {
+        EntityManager.prototype.GetAllMonthEntities = function (monthNumber, yearNumber) {
             var allEntities = this.Entities;
             var result = [];
             for (var index = 0; index < this.Entities.count(); index++) {

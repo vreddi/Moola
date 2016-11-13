@@ -8,6 +8,7 @@ requirejs.config({
 		jquery: 'External/jquery-2.2.4.min',
 		d3: "https://d3js.org/d3.v3.min",
 		c3: "External/c3.min",
+
 		//Moola modules
 		Date: 'Model/Date',
 		Cost: 'Model/Cost',
@@ -23,6 +24,8 @@ requirejs.config({
 		EntityManager: 'Controller/EntityManager',
 		"../Controller/EntityManager" : 'Controller/EntityManager',
 		BarChart: 'Model/BarChart',
-		Callbacks: 'Callbacks'
+		Callbacks: 'Callbacks',
+		HtmlElement: 'Model/HtmlElement',
+		MonthlyFinanceEntity: 'Model/MonthlyFinanceEntity'
     }
 });
