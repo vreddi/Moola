@@ -1,25 +1,25 @@
 /// <reference path="../Definitions/all.d.ts" />
-import Date = require("./Date");
-import Cost = require("./Cost");
-import Item = require("./Item");
-import Flow = require("./Flow");
-import PaymentMethod = require("./PaymentMethod");
-import Tags = require("./Tags");
+import { DateInfo } from "./Date";
+import { Cost } from "./Cost";
+import { Item } from "./Item";
+import { Flow } from "./Flow";
+import { PaymentMethod } from "./PaymentMethod";
+import { Tags } from "./Tags";
 
 /**
- * Entity represents a row in your expenses sheet. 
+ * Entity represents a row in your expenses sheet.
  */
 export class Entity{
-    
-    public date : Date.DateInfo;
-    public item : Item.Item;
-    public tags : Tags.Tags;
-    public cost: Cost.Cost;
-    public flow : Flow.Flow;
-    public paymentMethod : PaymentMethod.PaymentMethod;
-    
-    constructor(date : Date.DateInfo, item : Item.Item, tags : Tags.Tags, cost : Cost.Cost, flow : Flow.Flow, paymentMethod : PaymentMethod.PaymentMethod){
-        
+
+    public date : DateInfo;
+    public item : Item;
+    public tags : Tags;
+    public cost: Cost;
+    public flow : Flow;
+    public paymentMethod : PaymentMethod;
+
+    constructor(date : DateInfo, item : Item, tags : Tags, cost : Cost, flow : Flow, paymentMethod : PaymentMethod){
+
         this.date = date;
         this.item = item;
         this.tags = tags;
@@ -32,7 +32,7 @@ export class Entity{
      * To check if the entity is an expenditure or not.
      * @returns: True/False (boolean)
      */
-    public isExpenditure(){
+    public IsExpenditure(){
 
         return this.flow.isExpense;
     }
@@ -41,13 +41,13 @@ export class Entity{
      * To check if the entity is an earning or not.
      * @returns: True/False (boolean)
      */
-    public isEarning(){
-        
+    public IsEarning(){
+
         return !this.flow.isExpense;
     }
-    
+
 }
-    
-    
+
+
 
 

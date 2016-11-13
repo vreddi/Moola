@@ -1,20 +1,19 @@
 /// <reference path="../Definitions/all.d.ts" />
 
-import Entity = require("../Model/Entity");
-import Collection = require("../Model/Collections");
-import Parser = require("../Model/Parser");
+import { Entity } from "../Model/Entity";
+import { MoolaCollection } from "../Model/Collections";
+import { Parser } from "../Model/Parser";
 
 /**
- * Entity Manager manages a collection of entites and pertains alls its 
+ * Entity Manager manages a collection of entites and pertains alls its
  * responsibilities towards that collection only and not all the entities.
  */
 export class EntityManager{
 
-    Entities : Collection.MoolaCollection<Entity.Entity>;
+    Entities : MoolaCollection<Entity>;
 
-    constructor(Entities : Collection.MoolaCollection<Entity.Entity>){
-        
-        //this.Entities = Entities;
+    constructor(Entities : MoolaCollection<Entity>){
+
         this.Entities = Entities;
 
         console.log("Total Entities: " + this.Entities.count());
@@ -22,9 +21,9 @@ export class EntityManager{
         // Clean the data
         for(var index = 0; index < this.Entities.count(); index++){
 
-            var row : Entity.Entity = this.Entities.getItem(index);    
+            var row : Entity = this.Entities.getItem(index);
 
-            // The row contains crucial elements as undefined 
+            // The row contains crucial elements as undefined
             if(row.cost.fieldValue == null || row.cost.fieldValue.length == 0){
                 console.log("Deleting as Cost field is undefined or empty: Cost = " + row.cost.fieldValue + " Item = " + row.item.fieldValue + " Date = " + row.date.fieldValue);
                 this.Entities.delete(index);
@@ -44,17 +43,17 @@ export class EntityManager{
     }
 
     /**
-     * Get the total expenditure for a collection of entities. 
+     * Get the total expenditure for a collection of entities.
      * @returns: Total expenditure (number)
      */
-    public getTotalExpenditure(){
+    public GetTotalExpenditure(){
 
         var total : number = 0;
-        
+
         for(var index = 0; index < this.Entities.count(); index++){
 
-            var row : Entity.Entity = this.Entities.getItem(index);        
-            if(row.isExpenditure() && row.cost.value != undefined){
+            var row : Entity = this.Entities.getItem(index);
+            if(row.IsExpenditure() && row.cost.value != undefined){
 
                 total = total + row.cost.value;
             }
@@ -64,22 +63,22 @@ export class EntityManager{
     }
 
     /**
-     * Get the total earning amount for a collection of entities. 
+     * Get the total earning amount for a collection of entities.
      * @returns: Total earning (number)
      */
-    public getTotalEarning(){
+    public GetTotalEarning(){
 
         var total : number = 0;
 
         for(var index = 0; index < this.Entities.count(); index++){
 
-            var row : Entity.Entity = this.Entities.getItem(index);        
-            if(row.isEarning() && row.cost.value != undefined){
-                
+            var row : Entity = this.Entities.getItem(index);
+            if(row.IsEarning() && row.cost.value != undefined){
+
                 total = total + row.cost.value;
             }
         }
-        
+
         return total;
     }
 
@@ -87,15 +86,15 @@ export class EntityManager{
      * Get total expenditure subtracted from total earnings
      * @returns: Net Amount (number)
      */
-    public getNetAmount(){
+    public GetNetAmount(){
 
-        return this.getTotalEarning() - this.getTotalExpenditure();
+        return this.GetTotalEarning() - this.GetTotalExpenditure();
     }
 
     /**
      * Sort the collection of entities in ascending order of cost (earning or expenditure)
      */
-    public sortByAscendingCost(){
+    public SortByAscendingCost(){
 
         this.Entities.sort();
     }
@@ -103,7 +102,7 @@ export class EntityManager{
     /**
      * Sort the collection of entities in descending order of cost (earning or expenditure)
      */
-    public sortByDescendingCost(){
+    public SortByDescendingCost(){
 
         this.Entities.sort();
         this.Entities.reverse();
@@ -114,7 +113,7 @@ export class EntityManager{
      * involved in that collection.
      * @returns: Total number of days (number)
      */
-    public getTotalDays(){
+    public GetTotalDays(){
 
         // 0 is no day or month or year. 0 here is used as placeholder
         var currDayNum : number = 0;
@@ -124,7 +123,7 @@ export class EntityManager{
 
         for(var index = 0; index < this.Entities.count(); index++){
 
-            var entity : Entity.Entity = this.Entities.getItem(index);
+            var entity : Entity = this.Entities.getItem(index);
 
             // In case of invalid day, dont count the entity
             if(entity.date.dayNumber == null || isNaN(entity.date.dayNumber) || entity.date.dayNumber == undefined){
@@ -158,8 +157,8 @@ export class EntityManager{
      * involved in that collection.
      * @returns: Total number of months (number)
      */
-    public getTotalMonths(){
-        
+    public GetTotalMonths(){
+
         // 0 is no month or year. 0 here is used as placeholder
         var currMonthNum : number = 0;
         var currYearNum : number = 0;
@@ -167,7 +166,7 @@ export class EntityManager{
 
         for(var index = 0; index < this.Entities.count(); index++){
 
-            var entity : Entity.Entity = this.Entities.getItem(index);
+            var entity : Entity = this.Entities.getItem(index);
 
             // In case of invalid month, dont count the entity
             if(entity.date.monthNumber == null || isNaN(entity.date.monthNumber) || entity.date.monthNumber == undefined){
@@ -178,9 +177,9 @@ export class EntityManager{
             if(entity.date.yearNumber == null || isNaN(entity.date.yearNumber) || entity.date.yearNumber == undefined){
                 continue;
             }
-            
+
             if(currMonthNum != entity.date.monthNumber || currYearNum != entity.date.yearNumber){
-                
+
                 monthCount++;
                 currMonthNum = entity.date.monthNumber;
                 currYearNum = entity.date.yearNumber;
@@ -195,7 +194,7 @@ export class EntityManager{
      * involved in that collection.
      * @returns: Total number of years (number)
      */
-    public getTotalYears(){
+    public GetTotalYears(){
 
         // 0 is no year. 0 here is used as placeholder
         var currYearNum : number = 0;
@@ -203,7 +202,7 @@ export class EntityManager{
 
         for(var index = 0; index < this.Entities.count(); index++){
 
-            var entity : Entity.Entity = this.Entities.getItem(index);
+            var entity : Entity = this.Entities.getItem(index);
 
             // In case of invalid year, dont count the entity
             if(entity.date.yearNumber == null || isNaN(entity.date.yearNumber) || entity.date.yearNumber == undefined){
@@ -225,15 +224,15 @@ export class EntityManager{
      * month of a certain year.
      * @returns: Array of Entities from a certain month (Array<Entity.Entity>)
      */
-    public getAllMonthEntities(monthNumber : number, yearNumber: number){
+    public GetAllMonthEntities(monthNumber : number, yearNumber: number){
 
         var allEntities = this.Entities;
-        var result : Array<Entity.Entity> = [];
+        var result : Array<Entity> = [];
 
         for(var index = 0; index < this.Entities.count(); index++){
 
             var entitiy = this.Entities.getItem(index);
-            
+
             if(entitiy.date.monthNumber == monthNumber && entitiy.date.yearNumber == yearNumber){
                 result.push(entitiy);
             }
