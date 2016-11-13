@@ -14,7 +14,7 @@ A Web Based Application to Track Finances.
 
 3) Launch `index.html` in your favorite browser.
 
-Optional: Use Typescript Tools for whatever IDE or editor you use.
+Optional: Use Typescript Tools for whatever IDE or editor you use.   
 [Sublime](https://github.com/Microsoft/TypeScript-Sublime-Plugin) | 
 [Atom](https://atom.io/packages/atom-typescript)   
 [Emacs](https://github.com/ananthakumaran/tide) | 
