@@ -7,6 +7,7 @@ define(["require", "exports", "./Parser", "./Collections", "../Controller/Entity
             this.dataCollection = p.CsvToEntityManager(this.csvResult);
             this.dataCollectionManager = new EntityManager_1.EntityManager(new Collections_1.MoolaCollection(this.dataCollection));
             this.barChart = new BarChart_1.BarChart(d3, c3, $, this.dataCollectionManager);
+            this.ShowMonthlyFinanceSummaryBarChart('.content', 2016);
         }
         Visualizer.prototype.ShowMonthlyFinanceSummaryBarChart = function (htmlElement, year) {
             this.barChart.RenderBarChart(this.barChart.d3, this.barChart.c3, this.barChart.$, MonthlyFinanceEntity_1.MonthlyFinanceEntity.CreateMonthlyFinances(this.dataCollectionManager, year), htmlElement, year);

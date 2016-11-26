@@ -25,7 +25,7 @@ export class Visualizer{
         this.barChart = new BarChart(d3, c3, $, this.dataCollectionManager);
 
         // We are not showing the bar chart as soon as the CSV is uploaded (Frontend decision)
-        //this.ShowMonthlyFinanceSummaryBarChart();
+        this.ShowMonthlyFinanceSummaryBarChart('.content', 2016);
     }
 
     /**
