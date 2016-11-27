@@ -4,7 +4,7 @@
   "description": "A Web Based Application to Track Finances",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc; webpack --display-modules --display-error-details;"
   },
   "repository": {
     "type": "git",
@@ -23,8 +23,12 @@
   "homepage": "https://github.com/vreddi/Moola#readme",
   "devDependencies": {
     "c3": "^0.4.11",
+    "css-loader": "^0.26.0",
     "d3": "^3.5.17",
     "jquery": "^3.1.1",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "style-loader": "^0.13.1",
     "typescript": "^2.0.10",
     "webpack": "^1.13.3"
   }

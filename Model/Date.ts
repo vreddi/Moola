@@ -5,6 +5,7 @@ export class DateInfo{
     fieldValue : string;
     day : string;
     month : string;
+    shortMonth: string;
     year : string;
     dayNumber : number;
     monthNumber : number
@@ -12,12 +13,14 @@ export class DateInfo{
 
     constructor (date : string){
 
-        let dateElements = date.split("/");
+        let dateElements = date.split("/"),
+            constantsLibrary: Constants = new Constants();
 
         this.fieldValue = date;
 
         if(dateElements.length == 3){
-            let dateStringElements : Array<string>
+            let dateStringElements : Array<string>,
+                shortMonthLibrary: Array<string>;
 
             // American standards of writing date i.e Month/Day/Year
             this.dayNumber = Number(dateElements[1]);
@@ -25,15 +28,19 @@ export class DateInfo{
             this.yearNumber = Number(dateElements[2]);
 
             dateStringElements = DateInfo.GetDateStringElements(this.dayNumber, this.monthNumber, this.yearNumber);
+            shortMonthLibrary = constantsLibrary.constants['shortFormMonths'];
 
             this.month = dateStringElements[1];
             this.day = dateStringElements[0];
             this.year = dateStringElements[2];
+
+            this.shortMonth = shortMonthLibrary[this.monthNumber - 1];
         }
         else{
             this.fieldValue = undefined;
             this.day = undefined;
             this.month = undefined;
+            this.shortMonth = undefined;
             this.year = undefined;
 
             this.dayNumber = undefined;

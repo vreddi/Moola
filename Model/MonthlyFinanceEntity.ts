@@ -4,10 +4,12 @@ import { Constants } from "./Constants";
 export class MonthlyFinanceEntity{
 
 	public monthName: string;
+    public shortMonthName: string;
 	public monthNumber: number;
 	public yearNumber: number;
 	public earning: number;
 	public expenditure: number;
+    public shortMonthYearName: string;
 
 	/**
      * Creates monthly financial records for all the months in a particular year
@@ -19,6 +21,7 @@ export class MonthlyFinanceEntity{
 
         let constantsLibrary = new Constants(),
             months = constantsLibrary.constants["months"],
+            shortMonths = constantsLibrary.constants["shortFormMonths"],
             allMonthlyFinances: MonthlyFinanceEntity[] = [],
             totalEntities: number = entityManager.Entities.count();
 
@@ -28,9 +31,11 @@ export class MonthlyFinanceEntity{
 
             monthFinanceEntity.monthNumber = index + 1;
             monthFinanceEntity.monthName = months[index];
+            monthFinanceEntity.shortMonthName = shortMonths[index];
             monthFinanceEntity.expenditure = 0;
             monthFinanceEntity.earning = 0;
             monthFinanceEntity.yearNumber = year;
+            monthFinanceEntity.shortMonthYearName = monthFinanceEntity.shortMonthName + "'" + monthFinanceEntity.yearNumber.toString();
 
             allMonthlyFinances.push(monthFinanceEntity);
         }
