@@ -95,7 +95,3 @@ export class Entity{
     }
 
 }
-
-
-
-

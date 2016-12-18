@@ -33,8 +33,3 @@ window.$(document).ready(function($) {
         clearScreen();
     });
 });
-
-
-
-
-
