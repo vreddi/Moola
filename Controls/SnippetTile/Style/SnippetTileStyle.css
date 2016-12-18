@@ -1,0 +1,57 @@
+.SnippetTile-Card {
+	width: 250px;
+    height: 250px;
+    display: inline-block;
+    position: relative;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    box-shadow: 10px 10px 8px #777;
+    background-color: #f2f2f2;
+}
+
+.SnippetTile-CardValue {
+	font-size: 75px;
+    color: #555555;
+    bottom: 0px;
+    right: 0px;
+    display: block;
+    padding-bottom: 15%;
+    padding-right: 7%;
+    position: absolute;
+}
+
+.SnippetTile-CardTitle {
+	font-size: 30px;
+    color: #555555;
+    bottom: 0px;
+    right: 0px;
+    display: block;
+    padding-bottom: 5%;
+    padding-right: 10%;
+    position: absolute;
+}
+
+.SnippetTile-CardEarningSymbol {
+    float: left;
+    padding-left: 0.3em;
+    font-size: 3.9em;
+    color: #43A047;
+}
+
+.SnippetTile-CardExpenditureSymbol {
+    float: left;
+    padding-left: 0.3em;
+    font-size: 3.9em;
+    color: #E53935;
+}
+
+.SnippetTile-CardHeading {
+    color: #555555;
+    font-size: 1.5em;
+    float: right;
+    display: inline-block;
+    padding-right: 1em;
+    padding-top: 1em;
+}
