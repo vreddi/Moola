@@ -6,26 +6,23 @@
         "preserveConstEnums": true,
         // "outFile": "./Script/tsc.js",
         "outDir": "./Script",
+        "jsx": "react",
         "sourceMap": true
     },
-    "files": [
-        "./Controller/EntityManager.ts",
+    "filesGlob": [
+        "./Controller/*{.ts, .tsx}",
 
         "./Definitions/all.d.ts",
         "./Definitions/d3.d.ts",
         "./Definitions/require.d.ts",
 
-        "./Model/Collections.ts",
-        "./Model/Constants.ts",
-        "./Model/Cost.ts",
-        "./Model/Date.ts",
-        "./Model/Entity.ts",
-        "./Model/Flow.ts",
-        "./Model/Item.ts",
-        "./Model/Parser.ts",
-        "./Model/PaymentMethod.ts",
-        "./Model/Tags.ts",
-        "./Model/Visualizer.ts",
-        "./Model/BarChart"
+        "./Model/*{.ts, .tsx}",
+
+        "./Controls/JumbotronTile/*{.ts, .tsx}",
+        "./Controls/SnippetTile/*{.ts, .tsx}",
+        "./Controls/ExpenditureDistributionCard/*{.ts, .tsx}",
+
+        "./View/*{.ts, .tsx}",
+        "./View/Interfaces/*{.ts, .tsx}"
     ]
 }
