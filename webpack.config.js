@@ -13,6 +13,7 @@ module.exports = {
   		c3: "c3/c3.min",
       React: "react/dist/react.min",
       ReactDOM: "react-dom/dist/react-dom.min",
+      classnames: "classnames/index",
 
   		//Moola modules
   		Date: 'Model/Date',
@@ -34,8 +35,11 @@ module.exports = {
   		MonthlyFinanceEntity: 'Model/MonthlyFinanceEntity',
 
       JumbotronTile: 'Controls/JumbotronTile/JumbotronTile',
+      IJumbotronTile: 'Controls/JumbotronTile/IJumbotronTile',
       SnippetTile: 'Controls/SnippetTile/SnippetTile',
       ISnippetTile: 'Controls/SnippetTile/ISnippetTile',
+      ExpenditureDistributionCard: 'Controls/ExpenditureDistributionCard/ExpenditureDistributionCard',
+      IExpenditureDistributionCard: 'Controls/ExpenditureDistributionCard/IExpenditureDistributionCard',
 
       StartDashboard: 'View/StartDashboard',
       IStartDashboard: 'View/Interfaces/IStartDashboard'

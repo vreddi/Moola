@@ -10,12 +10,15 @@ import { BarChart }  from "./BarChart";
 import { Constants } from "./Constants";
 import { MonthlyFinanceEntity } from "./MonthlyFinanceEntity";
 import { HtmlElement } from "./HtmlElement";
+import { ExpenditureCategoryType } from "./ExpenditureCategory";
 
 import { IStartDashboard } from "../View/Interfaces/IStartDashboard";
 import { StartDashboard } from "../View/StartDashboard";
 import { JumbotronTile } from "../Controls/JumbotronTile/JumbotronTile";
 import { SnippetTile } from "../Controls/SnippetTile/SnippetTile";
 import { ISnippetTile } from "../Controls/SnippetTile/ISnippetTile";
+import { ExpenditureDistributionCard } from "../Controls/ExpenditureDistributionCard/ExpenditureDistributionCard";
+import { IExpenditureDistributionCard } from "../Controls/ExpenditureDistributionCard/IExpenditureDistributionCard";
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -76,6 +79,11 @@ export class Visualizer{
                 title: 'Expense',
                 value: Math.round(latestMonthFinanceEntity.expenditure),
                 type: new Flow('out')
+            }),
+            expenseDistributionCard: new ExpenditureDistributionCard(<IExpenditureDistributionCard>{
+                foodValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategoryType.Food]),
+                utilityValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategoryType.Utility]),
+                entertainmentValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategoryType.Entertainment])
             }),
             monthFinanceEntity: latestMonthFinanceEntity
         });

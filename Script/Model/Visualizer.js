@@ -5,9 +5,11 @@ var Flow_1 = require("../Model/Flow");
 var EntityManager_1 = require("../Controller/EntityManager");
 var BarChart_1 = require("./BarChart");
 var MonthlyFinanceEntity_1 = require("./MonthlyFinanceEntity");
+var ExpenditureCategory_1 = require("./ExpenditureCategory");
 var StartDashboard_1 = require("../View/StartDashboard");
 var JumbotronTile_1 = require("../Controls/JumbotronTile/JumbotronTile");
 var SnippetTile_1 = require("../Controls/SnippetTile/SnippetTile");
+var ExpenditureDistributionCard_1 = require("../Controls/ExpenditureDistributionCard/ExpenditureDistributionCard");
 var contentComponent = document.getElementsByClassName("content")[0];
 var Visualizer = (function () {
     function Visualizer(csv, d3, c3, $) {
@@ -36,6 +38,11 @@ var Visualizer = (function () {
                 title: 'Expense',
                 value: Math.round(latestMonthFinanceEntity.expenditure),
                 type: new Flow_1.Flow('out')
+            }),
+            expenseDistributionCard: new ExpenditureDistributionCard_1.ExpenditureDistributionCard({
+                foodValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategory_1.ExpenditureCategoryType.Food]),
+                utilityValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategory_1.ExpenditureCategoryType.Utility]),
+                entertainmentValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategory_1.ExpenditureCategoryType.Entertainment])
             }),
             monthFinanceEntity: latestMonthFinanceEntity
         });

@@ -1,4 +1,6 @@
 import { EntityManager } from "../Controller/EntityManager";
+import { Entity } from "./Entity";
+import { ExpenditureCategoryType } from "./ExpenditureCategory";
 import { Constants } from "./Constants";
 
 export class MonthlyFinanceEntity{
@@ -10,6 +12,17 @@ export class MonthlyFinanceEntity{
 	public earning: number;
 	public expenditure: number;
     public shortMonthYearName: string;
+    public expenseDistribution: any;
+
+    constructor() {
+
+        this.expenseDistribution = {};
+
+        // Initialize expenseDistribution object
+        for(let expenseCategory = 0; expenseCategory < ExpenditureCategoryType._count; ++expenseCategory) {
+            this.expenseDistribution[expenseCategory] = 0;
+        }
+    }
 
 	/**
      * Creates monthly financial records for all the months in a particular year
@@ -42,26 +55,32 @@ export class MonthlyFinanceEntity{
 
         for(let index = 0; index < totalEntities; index++){
 
-            if(entityManager.Entities.getItem(index) != undefined && entityManager.Entities.getItem(index).date.yearNumber != year){
+            let entity: Entity = entityManager.Entities.getItem(index);
+
+            if(entity != undefined && entity.date.yearNumber != year){
                 continue;
             }
             else{
                 let partialMonthFinanceEntity: MonthlyFinanceEntity = new MonthlyFinanceEntity();
 
-                partialMonthFinanceEntity.monthNumber = entityManager.Entities.getItem(index).date.monthNumber;
+                partialMonthFinanceEntity.monthNumber = entity.date.monthNumber;
 
-                if(entityManager.Entities.getItem(index).IsEarning()){
-                    partialMonthFinanceEntity.earning = entityManager.Entities.getItem(index).cost.value;
+                if(entity.IsEarning()){
+                    partialMonthFinanceEntity.earning = entity.cost.value;
                     partialMonthFinanceEntity.expenditure = 0;
                 }
                 else{
                     partialMonthFinanceEntity.earning = 0;
-                    partialMonthFinanceEntity.expenditure = entityManager.Entities.getItem(index).cost.value;
+                    partialMonthFinanceEntity.expenditure = entity.cost.value;
                 }
 
                 // Adding up to the total monthly earning/expenditure
                 allMonthlyFinances[partialMonthFinanceEntity.monthNumber - 1].earning += partialMonthFinanceEntity.earning;
                 allMonthlyFinances[partialMonthFinanceEntity.monthNumber - 1].expenditure += partialMonthFinanceEntity.expenditure;
+
+                if(entity.expenditureCategoryType != undefined) {
+                    allMonthlyFinances[partialMonthFinanceEntity.monthNumber - 1].expenseDistribution[entity.expenditureCategoryType] += partialMonthFinanceEntity.expenditure;
+                }
             }
         }
 

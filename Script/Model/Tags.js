@@ -3,6 +3,7 @@ var Tags = (function () {
     function Tags(val) {
         if (val != undefined && val != null && val != "") {
             val = val.replace(/ /g, "").replace(/"/g, "");
+            val = val.toLowerCase();
             this.fieldValue = val;
             this.tags = val.split(",");
         }

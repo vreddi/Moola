@@ -20,6 +20,7 @@
 
         "./Controls/JumbotronTile/*{.ts, .tsx}",
         "./Controls/SnippetTile/*{.ts, .tsx}",
+        "./Controls/ExpenditureDistributionCard/*{.ts, .tsx}",
 
         "./View/*{.ts, .tsx}",
         "./View/Interfaces/*{.ts, .tsx}"
