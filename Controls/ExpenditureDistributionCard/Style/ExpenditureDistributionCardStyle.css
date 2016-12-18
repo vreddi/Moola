@@ -1,0 +1,43 @@
+.ExpenditureDistributionCard {
+	width: 250px;
+    height: 530px;
+    display: inline-block;
+    position: relative;
+    margin: 1em 1.5em;
+    box-shadow: 10px 10px 8px #777;
+    background-color: #f2f2f2;
+}
+
+.ExpenditureDistributionCard-CategoryRow {
+    font-size: 1em;
+    clear: both;
+    height: 6em;
+}
+
+.ExpenditureDistributionCard-CategoryRow > * {
+    padding-top: 2rem;
+}
+
+.ExpenditureDistributionCard-Category {
+    font-size: 1em;
+    color: #555555;
+    float: left;
+    padding-left: 1.5rem;
+}
+
+.ExpenditureDistributionCard-ExpenseCategoryIcon {
+    font-size: 3rem;
+    float: left;
+}
+
+.ExpenditureDistributionCard-ExpenseCategoryTitle {
+    font-size: 2rem;
+}
+
+.ExpenditureDistributionCard-ExpenseCategoryValue {
+    font-size: 4rem;
+    color: #555555;
+    float: right;
+    padding-right: 1.5rem;
+}
+

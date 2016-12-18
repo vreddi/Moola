@@ -3,6 +3,7 @@
 import { Entity } from "../Model/Entity";
 import { MoolaCollection } from "../Model/Collections";
 import { Parser } from "../Model/Parser";
+import { DateInfo } from "../Model/Date";
 
 /**
  * Entity Manager manages a collection of entites and pertains alls its
@@ -157,14 +158,25 @@ export class EntityManager{
      * involved in that collection.
      * @returns: Total number of months (number)
      */
-    public GetTotalMonths(){
+    public GetTotalMonths(): number{
+        return this.GetAllMonths().length;
+    }
+
+    /**
+     * Accross the collection of entities this function gets the total months
+     * involved in that collection.
+     * @returns: List of months (Array<DateInfo>)
+     */
+    public GetAllMonths(): Array<DateInfo> {
 
         // 0 is no month or year. 0 here is used as placeholder
-        var currMonthNum : number = 0;
-        var currYearNum : number = 0;
-        var monthCount : number = 0;
+        let currMonthNum: number = 0,
+            currYearNum: number = 0,
+            monthCount: number = 0,
+            totalEntities: number = this.Entities.count(),
+            monthList: Array<DateInfo> = [];
 
-        for(var index = 0; index < this.Entities.count(); index++){
+        for(var index = 0; index < totalEntities; index++){
 
             var entity : Entity = this.Entities.getItem(index);
 
@@ -180,13 +192,18 @@ export class EntityManager{
 
             if(currMonthNum != entity.date.monthNumber || currYearNum != entity.date.yearNumber){
 
-                monthCount++;
+                monthList.push(entity.date);
                 currMonthNum = entity.date.monthNumber;
                 currYearNum = entity.date.yearNumber;
             }
         }
 
-        return monthCount;
+        monthList.sort(function(date1: DateInfo, date2: DateInfo){
+            let diff: number = date1.GetJulianDayNumber() - date2.GetJulianDayNumber();
+            return diff;
+        });
+
+        return monthList;
     }
 
     /**

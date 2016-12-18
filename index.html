@@ -20,9 +20,6 @@
 	<!-- Load c3.css -->
 	<link href="Style/c3.css" rel="stylesheet" type="text/css">
 
-	<!-- Include Relevant Scripts -->
-	<script data-main="Script/main" src="Script/require.js"></script>
-
 
 </head>
 
@@ -51,14 +48,8 @@
 
 	</div>
 
-	<script>
-		require(['main'], function(M){
-				require(['jquery'], function($){
-					require(['Callbacks']);
-				})
-		});
-		
-	</script>
+	<!-- Include the budle script -->
+	<script src="Script/modules.min.js"></script>
 </body>
 
 </html>
