@@ -21,7 +21,7 @@ export class Constants{
         this.categories = {
             food : ["food" ,"restaurant", "lunch", "dinner", "menu", "grub", "meal", "groceries", "takeout", "take-out", "bite", "entree", "drink", "snack", "cuisine"],
             personal : ["clothes", "shorts", "jeans", "t-shirt", "tshirt", "garments", "electronics", "bags", "shades", "jewelry","hats"],
-            entertainment : ["movie", "game", "outing"],
+            entertainment : ["movie", "gaming", "outing", "entertainment", "game", "playstation", "xbox", "ps4"],
             utility : ["electricity", "water", "lighting", "phone", "mobile", "bill"],
             household : ["apartment", "house", "home", "floor", "room", "rent", "grocery", "furniture", "bulb", "lighting", "kitchen", "bedroom"],
             salary : ["earning", "wage", "pay", "take", "payroll", "stipened"],

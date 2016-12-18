@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/vreddi/Moola#readme",
   "devDependencies": {
+    "@types/react": "^0.14.55",
+    "@types/react-dom": "^0.14.19",
     "c3": "^0.4.11",
     "css-loader": "^0.26.0",
     "d3": "^3.5.17",
