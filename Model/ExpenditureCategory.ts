@@ -3,12 +3,12 @@
 export enum ExpenditureCategoryType {
 	Food,
 	Utility,
-	Comute,
+	Transportation,
 	Personal,
 	Entertainment,
 	Salary,
-	Healthcare,
-	Household,
+	Medical,
+	House,
 	Miscellaneous,
 
 	_count

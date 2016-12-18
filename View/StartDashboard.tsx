@@ -63,6 +63,9 @@ export class StartDashboard extends React.Component<IStartDashboard, IStartDashb
                     <ExpenditureDistributionCard foodValue = {this.state.expenseDistributionCard.state.foodValue}
                                  utilityValue = {this.state.expenseDistributionCard.state.utilityValue}
                                  entertainmentValue = {this.state.expenseDistributionCard.state.entertainmentValue}
+                                 transportValue = {this.state.expenseDistributionCard.state.transportValue}
+                                 houseValue = {this.state.expenseDistributionCard.state.houseValue}
+                                 medicalValue = {this.state.expenseDistributionCard.state.medicalValue}
                                  htmlComponent = {component} />
                 </div>
             </section>

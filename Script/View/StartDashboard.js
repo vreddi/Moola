@@ -37,7 +37,7 @@ var StartDashboard = (function (_super) {
                         React.createElement(SnippetTile_1.SnippetTile, {heading: this.state.earningTile.state.heading, title: this.state.earningTile.state.title, type: this.state.earningTile.state.type, value: this.state.earningTile.state.value, htmlComponent: component}), 
                         React.createElement(SnippetTile_1.SnippetTile, {heading: this.state.expenseTile.state.heading, title: this.state.expenseTile.state.title, type: this.state.expenseTile.state.type, value: this.state.expenseTile.state.value, htmlComponent: component})), 
                     React.createElement("div", {className: "StartDashboard-Section2"}, 
-                        React.createElement(ExpenditureDistributionCard_1.ExpenditureDistributionCard, {foodValue: this.state.expenseDistributionCard.state.foodValue, utilityValue: this.state.expenseDistributionCard.state.utilityValue, entertainmentValue: this.state.expenseDistributionCard.state.entertainmentValue, htmlComponent: component})
+                        React.createElement(ExpenditureDistributionCard_1.ExpenditureDistributionCard, {foodValue: this.state.expenseDistributionCard.state.foodValue, utilityValue: this.state.expenseDistributionCard.state.utilityValue, entertainmentValue: this.state.expenseDistributionCard.state.entertainmentValue, transportValue: this.state.expenseDistributionCard.state.transportValue, houseValue: this.state.expenseDistributionCard.state.houseValue, medicalValue: this.state.expenseDistributionCard.state.medicalValue, htmlComponent: component})
                     ))
             )
         ));

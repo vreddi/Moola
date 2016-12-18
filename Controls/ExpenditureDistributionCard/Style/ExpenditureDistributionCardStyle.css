@@ -11,7 +11,7 @@
 .ExpenditureDistributionCard-CategoryRow {
     font-size: 1em;
     clear: both;
-    height: 6em;
+    height: 6.2em;
 }
 
 .ExpenditureDistributionCard-CategoryRow > * {
@@ -31,7 +31,7 @@
 }
 
 .ExpenditureDistributionCard-ExpenseCategoryTitle {
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 .ExpenditureDistributionCard-ExpenseCategoryValue {

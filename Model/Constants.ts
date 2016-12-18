@@ -7,7 +7,10 @@ export class Constants{
     public static color: any = {
         amber: "Shared-Color-Amber",
         lavender: "Shared-Color-Lavender",
-        lightBlue: "Shared-Color-LightBlue"
+        lightBlue: "Shared-Color-LightBlue",
+        lightRed: "Shared-Color-LightRed",
+        green: "Shared-Color-Green",
+        blueGrey: "Shared-Color-BlueGrey"
     }
 
     constructor(){
@@ -23,10 +26,10 @@ export class Constants{
             personal : ["clothes", "shorts", "jeans", "t-shirt", "tshirt", "garments", "electronics", "bags", "shades", "jewelry","hats"],
             entertainment : ["movie", "gaming", "outing", "entertainment", "game", "playstation", "xbox", "ps4"],
             utility : ["electricity", "water", "lighting", "phone", "mobile", "bill"],
-            household : ["apartment", "house", "home", "floor", "room", "rent", "grocery", "furniture", "bulb", "lighting", "kitchen", "bedroom"],
+            house : ["apartment", "house", "home", "floor", "room", "rent", "grocery", "furniture", "bulb", "lighting", "kitchen", "bedroom"],
             salary : ["earning", "wage", "pay", "take", "payroll", "stipened"],
-            comute : ["gas", "fuel", "car", "ride", "uber", "lyft", "bus", "taxi", "cab"],
-            healthcare : ["protein", "whey", "gym", "sport", "sports", "health", "healthy", "running", "active", "pills", "vitamin", "vitamins", "iron", "calcium", "zinc", "omega-3",
+            transportation : ["gas", "fuel", "car", "ride", "uber", "lyft", "bus", "taxi", "cab"],
+            medical : ["protein", "whey", "gym", "sport", "sports", "health", "healthy", "running", "active", "pills", "vitamin", "vitamins", "iron", "calcium", "zinc", "omega-3",
                         "creatine", "fitness", "fit"
                         ],
             miscellaneous : ["miscellaneous"]

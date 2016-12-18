@@ -83,7 +83,10 @@ export class Visualizer{
             expenseDistributionCard: new ExpenditureDistributionCard(<IExpenditureDistributionCard>{
                 foodValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategoryType.Food]),
                 utilityValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategoryType.Utility]),
-                entertainmentValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategoryType.Entertainment])
+                entertainmentValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategoryType.Entertainment]),
+                transportValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategoryType.Transportation]),
+                houseValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategoryType.House]),
+                medicalValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategoryType.Medical])
             }),
             monthFinanceEntity: latestMonthFinanceEntity
         });

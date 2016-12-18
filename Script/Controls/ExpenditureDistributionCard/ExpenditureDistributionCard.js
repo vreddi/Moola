@@ -12,9 +12,12 @@ var earningFontAwesomeStyle = "fa fa-angle-double-up";
 var expenseSymbolStyle = "SnippetTile-CardExpenditureSymbol";
 var expenseFontAwesomeStyle = "fa fa-angle-double-down";
 var expenditureDistributionIconStyle = "ExpenditureDistributionCard-ExpenseCategoryIcon";
+var transportFontAwesomeStyle = "fa fa-car";
 var foodFontAwesomeStyle = "fa fa-cutlery";
 var utilityFontAwesomeStyle = "fa fa-lightbulb-o";
 var entertainmentFontAwesomeStyle = "fa fa-television";
+var houseFontAwesomeStyle = "fa fa-home";
+var medicalFontAwesomeStyle = "fa fa-heartbeat";
 var classnames = require('classnames');
 var ExpenditureDistributionCard = (function (_super) {
     __extends(ExpenditureDistributionCard, _super);
@@ -24,16 +27,22 @@ var ExpenditureDistributionCard = (function (_super) {
             htmlComponent: expenditureDistributionTileData.htmlComponent,
             foodValue: expenditureDistributionTileData.foodValue,
             utilityValue: expenditureDistributionTileData.utilityValue,
-            entertainmentValue: expenditureDistributionTileData.entertainmentValue
+            entertainmentValue: expenditureDistributionTileData.entertainmentValue,
+            transportValue: expenditureDistributionTileData.transportValue,
+            houseValue: expenditureDistributionTileData.houseValue,
+            medicalValue: expenditureDistributionTileData.medicalValue
         };
         this.htmlComponent = expenditureDistributionTileData.htmlComponent;
         this.foodValue = expenditureDistributionTileData.foodValue;
         this.utilityValue = expenditureDistributionTileData.utilityValue;
         this.entertainmentValue = expenditureDistributionTileData.entertainmentValue;
+        this.transportValue = expenditureDistributionTileData.transportValue;
+        this.houseValue = expenditureDistributionTileData.houseValue;
+        this.medicalValue = expenditureDistributionTileData.medicalValue;
         this.inDOM = false;
     }
     ExpenditureDistributionCard.prototype.render = function () {
-        var foodCategoryIconClass = classnames(foodFontAwesomeStyle, expenditureDistributionIconStyle, Constants_1.Constants.color.lavender), utilityCategoryIconClass = classnames(utilityFontAwesomeStyle, expenditureDistributionIconStyle, Constants_1.Constants.color.amber), entertainmentCategoryIconClass = classnames(entertainmentFontAwesomeStyle, expenditureDistributionIconStyle, Constants_1.Constants.color.lightBlue);
+        var foodCategoryIconClass = classnames(foodFontAwesomeStyle, expenditureDistributionIconStyle, Constants_1.Constants.color.lavender), utilityCategoryIconClass = classnames(utilityFontAwesomeStyle, expenditureDistributionIconStyle, Constants_1.Constants.color.amber), entertainmentCategoryIconClass = classnames(entertainmentFontAwesomeStyle, expenditureDistributionIconStyle, Constants_1.Constants.color.lightBlue), transportCategoryIconClass = classnames(transportFontAwesomeStyle, expenditureDistributionIconStyle, Constants_1.Constants.color.blueGrey), houseCategoryIconClass = classnames(houseFontAwesomeStyle, expenditureDistributionIconStyle, Constants_1.Constants.color.green), medicalIconClass = classnames(medicalFontAwesomeStyle, expenditureDistributionIconStyle, Constants_1.Constants.color.lightRed);
         return (React.createElement("div", {className: "ExpenditureDistributionCard"}, 
             React.createElement("div", {className: "ExpenditureDistributionCard-CategoryRow"}, 
                 React.createElement("div", {className: "ExpenditureDistributionCard-Category"}, 
@@ -55,7 +64,28 @@ var ExpenditureDistributionCard = (function (_super) {
                     React.createElement("div", {className: "ExpenditureDistributionCard-ExpenseCategoryTitle"}, "Entertainment")), 
                 React.createElement("div", {className: "ExpenditureDistributionCard-ExpenseCategoryValue"}, 
                     "$", 
-                    this.state.entertainmentValue))));
+                    this.state.entertainmentValue)), 
+            React.createElement("div", {className: "ExpenditureDistributionCard-CategoryRow"}, 
+                React.createElement("div", {className: "ExpenditureDistributionCard-Category"}, 
+                    React.createElement("i", {className: houseCategoryIconClass, "aria-hidden": "true"}), 
+                    React.createElement("div", {className: "ExpenditureDistributionCard-ExpenseCategoryTitle"}, "House")), 
+                React.createElement("div", {className: "ExpenditureDistributionCard-ExpenseCategoryValue"}, 
+                    "$", 
+                    this.state.houseValue)), 
+            React.createElement("div", {className: "ExpenditureDistributionCard-CategoryRow"}, 
+                React.createElement("div", {className: "ExpenditureDistributionCard-Category"}, 
+                    React.createElement("i", {className: transportCategoryIconClass, "aria-hidden": "true"}), 
+                    React.createElement("div", {className: "ExpenditureDistributionCard-ExpenseCategoryTitle"}, "Transport")), 
+                React.createElement("div", {className: "ExpenditureDistributionCard-ExpenseCategoryValue"}, 
+                    "$", 
+                    this.state.transportValue)), 
+            React.createElement("div", {className: "ExpenditureDistributionCard-CategoryRow"}, 
+                React.createElement("div", {className: "ExpenditureDistributionCard-Category"}, 
+                    React.createElement("i", {className: medicalIconClass, "aria-hidden": "true"}), 
+                    React.createElement("div", {className: "ExpenditureDistributionCard-ExpenseCategoryTitle"}, "Medical")), 
+                React.createElement("div", {className: "ExpenditureDistributionCard-ExpenseCategoryValue"}, 
+                    "$", 
+                    this.state.medicalValue))));
     };
     ExpenditureDistributionCard.prototype.componentWillMount = function () {
         this.inDOM = true;

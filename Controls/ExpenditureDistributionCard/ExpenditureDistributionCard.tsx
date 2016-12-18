@@ -15,9 +15,12 @@ const expenseSymbolStyle: string = "SnippetTile-CardExpenditureSymbol";
 const expenseFontAwesomeStyle: string = "fa fa-angle-double-down";
 const expenditureDistributionIconStyle: string = "ExpenditureDistributionCard-ExpenseCategoryIcon";
 
+const transportFontAwesomeStyle: string = "fa fa-car";
 const foodFontAwesomeStyle: string = "fa fa-cutlery";
 const utilityFontAwesomeStyle: string = "fa fa-lightbulb-o";
 const entertainmentFontAwesomeStyle: string = "fa fa-television";
+const houseFontAwesomeStyle: string = "fa fa-home";
+const medicalFontAwesomeStyle: string = "fa fa-heartbeat";
 
 var classnames = require('classnames');
 
@@ -28,6 +31,9 @@ export class ExpenditureDistributionCard extends React.Component<IExpenditureDis
 	public foodValue: number;
 	public utilityValue: number;
 	public entertainmentValue: number;
+	public transportValue: number;
+	public houseValue: number;
+	public medicalValue: number;
 
 	constructor(expenditureDistributionTileData: IExpenditureDistributionCard) {
 		super();
@@ -35,14 +41,19 @@ export class ExpenditureDistributionCard extends React.Component<IExpenditureDis
 			htmlComponent: expenditureDistributionTileData.htmlComponent,
 			foodValue: expenditureDistributionTileData.foodValue,
 			utilityValue: expenditureDistributionTileData.utilityValue,
-			entertainmentValue: expenditureDistributionTileData.entertainmentValue
-		} as any;
-
+			entertainmentValue: expenditureDistributionTileData.entertainmentValue,
+			transportValue: expenditureDistributionTileData.transportValue,
+			houseValue: expenditureDistributionTileData.houseValue,
+			medicalValue: expenditureDistributionTileData.medicalValue
+		}
 
 		this.htmlComponent = expenditureDistributionTileData.htmlComponent;
 		this.foodValue = expenditureDistributionTileData.foodValue;
 		this.utilityValue = expenditureDistributionTileData.utilityValue;
 		this.entertainmentValue = expenditureDistributionTileData.entertainmentValue;
+		this.transportValue = expenditureDistributionTileData.transportValue;
+		this.houseValue = expenditureDistributionTileData.houseValue;
+		this.medicalValue = expenditureDistributionTileData.medicalValue;
 		this.inDOM = false;
 	}
 
@@ -50,7 +61,10 @@ export class ExpenditureDistributionCard extends React.Component<IExpenditureDis
 
 		let foodCategoryIconClass = classnames(foodFontAwesomeStyle, expenditureDistributionIconStyle, Constants.color.lavender),
 			utilityCategoryIconClass = classnames(utilityFontAwesomeStyle, expenditureDistributionIconStyle, Constants.color.amber),
-			entertainmentCategoryIconClass = classnames(entertainmentFontAwesomeStyle, expenditureDistributionIconStyle, Constants.color.lightBlue);
+			entertainmentCategoryIconClass = classnames(entertainmentFontAwesomeStyle, expenditureDistributionIconStyle, Constants.color.lightBlue),
+			transportCategoryIconClass = classnames(transportFontAwesomeStyle, expenditureDistributionIconStyle, Constants.color.blueGrey),
+			houseCategoryIconClass = classnames(houseFontAwesomeStyle, expenditureDistributionIconStyle, Constants.color.green),
+			medicalIconClass = classnames(medicalFontAwesomeStyle, expenditureDistributionIconStyle, Constants.color.lightRed);
 
 		return (
 			<div className="ExpenditureDistributionCard">
@@ -76,6 +90,30 @@ export class ExpenditureDistributionCard extends React.Component<IExpenditureDis
 						<div className="ExpenditureDistributionCard-ExpenseCategoryTitle">Entertainment</div>
 					</div>
 					<div className="ExpenditureDistributionCard-ExpenseCategoryValue">${this.state.entertainmentValue}</div>
+				</div>
+
+				<div className="ExpenditureDistributionCard-CategoryRow">
+					<div className="ExpenditureDistributionCard-Category">
+						<i className={ houseCategoryIconClass } aria-hidden="true"></i>
+						<div className="ExpenditureDistributionCard-ExpenseCategoryTitle">House</div>
+					</div>
+					<div className="ExpenditureDistributionCard-ExpenseCategoryValue">${this.state.houseValue}</div>
+				</div>
+
+				<div className="ExpenditureDistributionCard-CategoryRow">
+					<div className="ExpenditureDistributionCard-Category">
+						<i className={ transportCategoryIconClass } aria-hidden="true"></i>
+						<div className="ExpenditureDistributionCard-ExpenseCategoryTitle">Transport</div>
+					</div>
+					<div className="ExpenditureDistributionCard-ExpenseCategoryValue">${this.state.transportValue}</div>
+				</div>
+
+				<div className="ExpenditureDistributionCard-CategoryRow">
+					<div className="ExpenditureDistributionCard-Category">
+						<i className={ medicalIconClass } aria-hidden="true"></i>
+						<div className="ExpenditureDistributionCard-ExpenseCategoryTitle">Medical</div>
+					</div>
+					<div className="ExpenditureDistributionCard-ExpenseCategoryValue">${this.state.medicalValue}</div>
 				</div>
 			</div>
 		);

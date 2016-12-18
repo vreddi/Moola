@@ -42,7 +42,10 @@ var Visualizer = (function () {
             expenseDistributionCard: new ExpenditureDistributionCard_1.ExpenditureDistributionCard({
                 foodValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategory_1.ExpenditureCategoryType.Food]),
                 utilityValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategory_1.ExpenditureCategoryType.Utility]),
-                entertainmentValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategory_1.ExpenditureCategoryType.Entertainment])
+                entertainmentValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategory_1.ExpenditureCategoryType.Entertainment]),
+                transportValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategory_1.ExpenditureCategoryType.Transportation]),
+                houseValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategory_1.ExpenditureCategoryType.House]),
+                medicalValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategory_1.ExpenditureCategoryType.Medical])
             }),
             monthFinanceEntity: latestMonthFinanceEntity
         });
