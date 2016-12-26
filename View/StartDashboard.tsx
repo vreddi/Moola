@@ -3,6 +3,8 @@ import { SnippetTile } from "../Controls/SnippetTile/SnippetTile";
 import { ISnippetTile } from "../Controls/SnippetTile/ISnippetTile";
 import { ExpenditureDistributionCard } from "../Controls/ExpenditureDistributionCard/ExpenditureDistributionCard";
 import { IExpenditureDistributionCard } from "../Controls/ExpenditureDistributionCard/IExpenditureDistributionCard";
+import { SavingEfficiencyCard } from "../Controls/SavingEfficiencyCard/SavingEfficiencyCard";
+import { ISavingEfficiencyCard } from "../Controls/SavingEfficiencyCard/ISavingEfficiencyCard";
 import { IStartDashboard } from "./Interfaces/IStartDashboard";
 import { MonthlyFinanceEntity } from "../Model/MonthlyFinanceEntity";
 
@@ -17,6 +19,7 @@ export class StartDashboard extends React.Component<IStartDashboard, IStartDashb
 	public earningTile: SnippetTile;
 	public expenseTile: SnippetTile;
     public expenseDistributionCard: ExpenditureDistributionCard;
+    public savingEfficiencyCard: SavingEfficiencyCard;
     public monthFinanceEntity: MonthlyFinanceEntity;
 
 	constructor(startDashboard: IStartDashboard) {
@@ -27,6 +30,7 @@ export class StartDashboard extends React.Component<IStartDashboard, IStartDashb
             earningTile: startDashboard.earningTile,
             expenseTile: startDashboard.expenseTile,
             expenseDistributionCard: startDashboard.expenseDistributionCard,
+            savingEfficiencyCard: startDashboard.savingEfficiencyCard,
             monthFinanceEntity: startDashboard.monthFinanceEntity
         } as IStartDashboard;
 
@@ -34,6 +38,7 @@ export class StartDashboard extends React.Component<IStartDashboard, IStartDashb
         this.earningTile = startDashboard.earningTile;
         this.expenseTile = startDashboard.expenseTile;
         this.expenseDistributionCard = startDashboard.expenseDistributionCard;
+        this.savingEfficiencyCard = startDashboard.savingEfficiencyCard;
         this.monthFinanceEntity = startDashboard.monthFinanceEntity;
 	}
 
@@ -68,6 +73,13 @@ export class StartDashboard extends React.Component<IStartDashboard, IStartDashb
                                  medicalValue = {this.state.expenseDistributionCard.state.medicalValue}
                                  htmlComponent = {component} />
                 </div>
+                <div className="StartDashboard-Section3">
+                    <SavingEfficiencyCard title = {this.state.savingEfficiencyCard.state.title}
+                                        earning = {this.state.savingEfficiencyCard.state.earning}
+                                        expenditure = {this.state.savingEfficiencyCard.state.expenditure}
+                                        monthYearText = {this.state.savingEfficiencyCard.state.monthYearText}
+                     />
+                </div>
             </section>
             </JumbotronTile>
             </div>
@@ -81,6 +93,7 @@ export class StartDashboard extends React.Component<IStartDashboard, IStartDashb
                             earningTile={this.earningTile}
                             expenseTile={this.expenseTile}
                             expenseDistributionCard={this.expenseDistributionCard}
+                            savingEfficiencyCard={this.savingEfficiencyCard}
                             monthFinanceEntity = {this.monthFinanceEntity} />
             , htmlComponent);
     }

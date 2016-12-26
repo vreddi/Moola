@@ -10,6 +10,7 @@ var StartDashboard_1 = require("../View/StartDashboard");
 var JumbotronTile_1 = require("../Controls/JumbotronTile/JumbotronTile");
 var SnippetTile_1 = require("../Controls/SnippetTile/SnippetTile");
 var ExpenditureDistributionCard_1 = require("../Controls/ExpenditureDistributionCard/ExpenditureDistributionCard");
+var SavingEfficiencyCard_1 = require("../Controls/SavingEfficiencyCard/SavingEfficiencyCard");
 var contentComponent = document.getElementsByClassName("content")[0];
 var Visualizer = (function () {
     function Visualizer(csv, d3, c3, $) {
@@ -46,6 +47,12 @@ var Visualizer = (function () {
                 transportValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategory_1.ExpenditureCategoryType.Transportation]),
                 houseValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategory_1.ExpenditureCategoryType.House]),
                 medicalValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategory_1.ExpenditureCategoryType.Medical])
+            }),
+            savingEfficiencyCard: new SavingEfficiencyCard_1.SavingEfficiencyCard({
+                title: "Saving Efficiency",
+                earning: parseFloat(latestMonthFinanceEntity.earning.toFixed(2)),
+                expenditure: parseFloat(latestMonthFinanceEntity.expenditure.toFixed(2)),
+                monthYearText: latestMonthFinanceEntity.shortMonthYearName
             }),
             monthFinanceEntity: latestMonthFinanceEntity
         });

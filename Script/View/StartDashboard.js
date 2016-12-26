@@ -7,6 +7,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var JumbotronTile_1 = require("../Controls/JumbotronTile/JumbotronTile");
 var SnippetTile_1 = require("../Controls/SnippetTile/SnippetTile");
 var ExpenditureDistributionCard_1 = require("../Controls/ExpenditureDistributionCard/ExpenditureDistributionCard");
+var SavingEfficiencyCard_1 = require("../Controls/SavingEfficiencyCard/SavingEfficiencyCard");
 var React = require("react");
 var ReactDOM = require("react-dom");
 require("../../View/Style/StartDashboardStyle.css");
@@ -19,12 +20,14 @@ var StartDashboard = (function (_super) {
             earningTile: startDashboard.earningTile,
             expenseTile: startDashboard.expenseTile,
             expenseDistributionCard: startDashboard.expenseDistributionCard,
+            savingEfficiencyCard: startDashboard.savingEfficiencyCard,
             monthFinanceEntity: startDashboard.monthFinanceEntity
         };
         this.dashboardTile = startDashboard.dashboardTile;
         this.earningTile = startDashboard.earningTile;
         this.expenseTile = startDashboard.expenseTile;
         this.expenseDistributionCard = startDashboard.expenseDistributionCard;
+        this.savingEfficiencyCard = startDashboard.savingEfficiencyCard;
         this.monthFinanceEntity = startDashboard.monthFinanceEntity;
     }
     StartDashboard.prototype.render = function () {
@@ -38,12 +41,15 @@ var StartDashboard = (function (_super) {
                         React.createElement(SnippetTile_1.SnippetTile, {heading: this.state.expenseTile.state.heading, title: this.state.expenseTile.state.title, type: this.state.expenseTile.state.type, value: this.state.expenseTile.state.value, htmlComponent: component})), 
                     React.createElement("div", {className: "StartDashboard-Section2"}, 
                         React.createElement(ExpenditureDistributionCard_1.ExpenditureDistributionCard, {foodValue: this.state.expenseDistributionCard.state.foodValue, utilityValue: this.state.expenseDistributionCard.state.utilityValue, entertainmentValue: this.state.expenseDistributionCard.state.entertainmentValue, transportValue: this.state.expenseDistributionCard.state.transportValue, houseValue: this.state.expenseDistributionCard.state.houseValue, medicalValue: this.state.expenseDistributionCard.state.medicalValue, htmlComponent: component})
+                    ), 
+                    React.createElement("div", {className: "StartDashboard-Section3"}, 
+                        React.createElement(SavingEfficiencyCard_1.SavingEfficiencyCard, {title: this.state.savingEfficiencyCard.state.title, earning: this.state.savingEfficiencyCard.state.earning, expenditure: this.state.savingEfficiencyCard.state.expenditure, monthYearText: this.state.savingEfficiencyCard.state.monthYearText})
                     ))
             )
         ));
     };
     StartDashboard.prototype.RenderDashboard = function (htmlComponent) {
-        ReactDOM.render(React.createElement(StartDashboard, {dashboardTile: this.dashboardTile, earningTile: this.earningTile, expenseTile: this.expenseTile, expenseDistributionCard: this.expenseDistributionCard, monthFinanceEntity: this.monthFinanceEntity}), htmlComponent);
+        ReactDOM.render(React.createElement(StartDashboard, {dashboardTile: this.dashboardTile, earningTile: this.earningTile, expenseTile: this.expenseTile, expenseDistributionCard: this.expenseDistributionCard, savingEfficiencyCard: this.savingEfficiencyCard, monthFinanceEntity: this.monthFinanceEntity}), htmlComponent);
     };
     return StartDashboard;
 }(React.Component));

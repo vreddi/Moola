@@ -4,7 +4,7 @@ var Cost = (function () {
         this.fieldValue = val;
         if (val != undefined) {
             if (val.charAt(0) == '$') {
-                var numericVal = val.substr(1);
+                var numericVal = (val.substr(1)).replace(",", "");
                 this.value = parseFloat(numericVal);
             }
         }

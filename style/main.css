@@ -14,13 +14,6 @@ body {
 	text-align: center;
 }
 
-svg{
-	background-color: transparent;
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
-}
-
 .Shared-Color-Lavender {
 	color: #9575CD;
 }

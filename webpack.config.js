@@ -40,6 +40,8 @@ module.exports = {
       ISnippetTile: 'Controls/SnippetTile/ISnippetTile',
       ExpenditureDistributionCard: 'Controls/ExpenditureDistributionCard/ExpenditureDistributionCard',
       IExpenditureDistributionCard: 'Controls/ExpenditureDistributionCard/IExpenditureDistributionCard',
+      SavingEfficiencyCard: 'Controls/SavingEfficiencyCard/SavingEfficiencyCard',
+      ISavingEfficiencyCard: 'Controls/SavingEfficiencyCard/ISavingEfficiencyCard',
 
       StartDashboard: 'View/StartDashboard',
       IStartDashboard: 'View/Interfaces/IStartDashboard'

@@ -19,6 +19,8 @@ import { SnippetTile } from "../Controls/SnippetTile/SnippetTile";
 import { ISnippetTile } from "../Controls/SnippetTile/ISnippetTile";
 import { ExpenditureDistributionCard } from "../Controls/ExpenditureDistributionCard/ExpenditureDistributionCard";
 import { IExpenditureDistributionCard } from "../Controls/ExpenditureDistributionCard/IExpenditureDistributionCard";
+import { SavingEfficiencyCard } from "../Controls/SavingEfficiencyCard/SavingEfficiencyCard";
+import { ISavingEfficiencyCard } from "../Controls/SavingEfficiencyCard/ISavingEfficiencyCard";
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -87,6 +89,12 @@ export class Visualizer{
                 transportValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategoryType.Transportation]),
                 houseValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategoryType.House]),
                 medicalValue: Math.round(latestMonthFinanceEntity.expenseDistribution[ExpenditureCategoryType.Medical])
+            }),
+            savingEfficiencyCard: new SavingEfficiencyCard(<ISavingEfficiencyCard>{
+                title: "Saving Efficiency",
+                earning: parseFloat(latestMonthFinanceEntity.earning.toFixed(2)),
+                expenditure: parseFloat(latestMonthFinanceEntity.expenditure.toFixed(2)),
+                monthYearText: latestMonthFinanceEntity.shortMonthYearName
             }),
             monthFinanceEntity: latestMonthFinanceEntity
         });
