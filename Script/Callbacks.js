@@ -23,6 +23,7 @@ window.$(document).ready(function($) {
         var fr = new FileReader();
         fr.onload = function(){
             window.p = new Parser.Parser();
+            console.log(this.result);
             window.v = new Visualizer.Visualizer(this.result, d3, c3, $);
 
             //Used for debugging on console for now
@@ -32,4 +33,27 @@ window.$(document).ready(function($) {
         fr.readAsText(this.files[0]);
         clearScreen();
     });
+
+    // Callback for uploading a csv file to parse
+    document.getElementById("sample").addEventListener('click', function(){
+        var fr = new FileReader();
+        fr.onload = function(){
+            window.p = new Parser.Parser();
+            console.log(this.result);
+            window.v = new Visualizer.Visualizer(this.result, d3, c3, $);
+
+            //Used for debugging on console for now
+            // Remove this later
+            window.a = window.p.CsvToJson(this.result);
+        }
+        fr.readAsText(this.files[0]);
+        clearScreen();
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "../Sample Data.csv",
+        dataType: "text",
+        success: function(data) {processData(data);}
+     });
 });

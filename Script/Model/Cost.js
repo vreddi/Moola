@@ -1,19 +1,21 @@
-"use strict";
-var Cost = (function () {
-    function Cost(val) {
-        this.fieldValue = val;
-        if (val != undefined) {
-            if (val.charAt(0) == '$') {
-                var numericVal = (val.substr(1)).replace(",", "");
-                this.value = parseFloat(numericVal);
+define(["require", "exports"], function (require, exports) {
+    "use strict";
+    var Cost = (function () {
+        function Cost(val) {
+            this.fieldValue = val;
+            if (val != undefined) {
+                if (val.charAt(0) == '$') {
+                    var numericVal = (val.substr(1)).replace(",", "");
+                    this.value = parseFloat(numericVal);
+                }
+            }
+            else {
+                this.value = 0;
+                this.fieldValue = "";
             }
         }
-        else {
-            this.value = 0;
-            this.fieldValue = "";
-        }
-    }
-    return Cost;
-}());
-exports.Cost = Cost;
+        return Cost;
+    }());
+    exports.Cost = Cost;
+});
 //# sourceMappingURL=Cost.js.map
